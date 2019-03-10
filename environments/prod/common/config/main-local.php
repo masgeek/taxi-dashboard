@@ -1,7 +1,7 @@
 <?php
-$password = 'ua49VXlkp8VI';
-$username = 'pizzaout_client';
-$database = 'pizzaout_db';
+$password = 'taxi';
+$username = 'taxi';
+$database = 'taxi';
 
 $dbconfig = [
     'class' => 'yii\db\Connection',
