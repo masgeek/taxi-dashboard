@@ -1,0 +1,12 @@
+;Rename to .phploy, this will hold all credentials for your fTP
+[staging]
+user = tsobucok
+pass = pz82Eok30B
+branch = "master"
+logger = off
+
+[production]
+user = tsobucok
+pass = pz82Eok30B
+branch = "master"
+logger = off
