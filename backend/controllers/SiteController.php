@@ -16,7 +16,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviorsold()
     {
         return [
             'access' => [
@@ -73,6 +73,11 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionAbout()
+    {
+        return $this->render('about');
     }
 
     public function actionLogout()

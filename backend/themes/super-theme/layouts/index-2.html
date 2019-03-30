@@ -1,31 +1,36 @@
-<?php
-
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-
-/* @var $this \yii\web\View */
-/* @var $content string */
-
-//\backend\assetmanager\Bootstrap4Asset::register($this);
-\backend\assetmanager\SuperThemeAsset::register($this)
-?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Taxi dashboard">
-    <meta name="author" content="Sammy Barasa"/>
-    <!--
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
-    -->
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+
+    <title>Superieur Admin - Dashboard</title>
+
+    <!-- Bootstrap 4.0-->
+    <link rel="stylesheet" href="../assets/vendor_components/bootstrap/dist/css/bootstrap.css">
+
+    <!-- Bootstrap extend-->
+    <link rel="stylesheet" href="css/bootstrap-extend.css">
+
+    <!-- theme style -->
+    <link rel="stylesheet" href="css/master_style.css">
+
+    <!-- Superieur Admin skins -->
+    <link rel="stylesheet" href="css/skins/_all-skins.css">
+
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="../assets/vendor_components/bootstrap-daterangepicker/daterangepicker.css">
+
+    <!-- Morris charts -->
+    <link rel="stylesheet" href="../assets/vendor_components/morris.js/morris.css">
+
+    <!-- Data Table-->
+    <link rel="stylesheet" type="text/css" href="../assets/vendor_components/datatable/datatables.min.css"/>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,9 +38,11 @@ use yii\widgets\Breadcrumbs;
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
 </head>
+
 <body class="hold-transition skin-purple sidebar-mini">
-<?php $this->beginBody() ?>
 <div class="wrapper">
 
     <header class="main-header">
@@ -43,13 +50,13 @@ use yii\widgets\Breadcrumbs;
         <a href="index.html" class="logo">
             <!-- mini logo -->
             <div class="logo-mini">
-                <span class="light-logo"><img src="../myassets/images/logo-light.png" alt="logo"></span>
-                <span class="dark-logo"><img src="../myassets/images/logo-dark.png" alt="logo"></span>
+                <span class="light-logo"><img src="../images/logo-light.png" alt="logo"></span>
+                <span class="dark-logo"><img src="../images/logo-dark.png" alt="logo"></span>
             </div>
             <!-- logo-->
             <div class="logo-lg">
-                <span class="light-logo"><img src="../myassets/images/logo-light-text.png" alt="logo"></span>
-                <span class="dark-logo"><img src="../myassets/images/logo-dark-text.png" alt="logo"></span>
+                <span class="light-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+                <span class="dark-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
             </div>
         </a>
         <!-- Header Navbar -->
@@ -67,20 +74,20 @@ use yii\widgets\Breadcrumbs;
                         <a class="nav-link hidden-sm-down" href="javascript:void(0)"><i class="mdi mdi-magnify"></i></a>
                         <form class="app-search" style="display: none;">
                             <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                    class="srh-btn"><i class="ti-close"></i></a>
+                                class="srh-btn"><i class="ti-close"></i></a>
                         </form>
                     </li>
                     <!-- User Account-->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../myassets/images/avatar/7.jpg" class="user-image rounded-circle" alt="User Image">
+                            <img src="../images/avatar/7.jpg" class="user-image rounded-circle" alt="User Image">
                         </a>
                         <ul class="dropdown-menu animated flipInY">
                             <!-- User image -->
-                            <li class="user-header bg-img" style="background-image: url(../../images/user-info.jpg)"
+                            <li class="user-header bg-img" style="background-image: url(../images/user-info.jpg)"
                                 data-overlay="3">
                                 <div class="flexbox align-self-center">
-                                    <img src="../myassets/images/avatar/7.jpg" class="float-left rounded-circle"
+                                    <img src="../images/avatar/7.jpg" class="float-left rounded-circle"
                                          alt="User Image">
                                     <h4 class="user-name align-self-center">
                                         <span>Samuel Brus</span>
@@ -118,7 +125,7 @@ use yii\widgets\Breadcrumbs;
 
                             <li class="header">
                                 <div class="bg-img text-white p-20"
-                                     style="background-image: url(../myassets/images/user-info.jpg)" data-overlay="5">
+                                     style="background-image: url(../images/user-info.jpg)" data-overlay="5">
                                     <div class="flexbox">
                                         <div>
                                             <h3 class="mb-0 mt-0">5 New</h3>
@@ -136,7 +143,7 @@ use yii\widgets\Breadcrumbs;
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../myassets/images/user2-160x160.jpg" class="rounded-circle"
+                                                <img src="../images/user2-160x160.jpg" class="rounded-circle"
                                                      alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
@@ -152,7 +159,7 @@ use yii\widgets\Breadcrumbs;
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../myassets/images/user3-128x128.jpg" class="rounded-circle"
+                                                <img src="../images/user3-128x128.jpg" class="rounded-circle"
                                                      alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
@@ -167,7 +174,7 @@ use yii\widgets\Breadcrumbs;
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../myassets/images/user4-128x128.jpg" class="rounded-circle"
+                                                <img src="../images/user4-128x128.jpg" class="rounded-circle"
                                                      alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
@@ -182,7 +189,7 @@ use yii\widgets\Breadcrumbs;
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../myassets/images/user3-128x128.jpg" class="rounded-circle"
+                                                <img src="../images/user3-128x128.jpg" class="rounded-circle"
                                                      alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
@@ -197,7 +204,7 @@ use yii\widgets\Breadcrumbs;
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../myassets/images/user4-128x128.jpg" class="rounded-circle"
+                                                <img src="../images/user4-128x128.jpg" class="rounded-circle"
                                                      alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
@@ -224,7 +231,7 @@ use yii\widgets\Breadcrumbs;
 
                             <li class="header">
                                 <div class="bg-img text-white p-20"
-                                     style="background-image: url(../myassets/images/user-info.jpg)" data-overlay="5">
+                                     style="background-image: url(../images/user-info.jpg)" data-overlay="5">
                                     <div class="flexbox">
                                         <div>
                                             <h3 class="mb-0 mt-0">7 New</h3>
@@ -294,7 +301,7 @@ use yii\widgets\Breadcrumbs;
 
                             <li class="header">
                                 <div class="bg-img text-white p-20"
-                                     style="background-image: url(../myassets/images/user-info.jpg)" data-overlay="5">
+                                     style="background-image: url(../images/user-info.jpg)" data-overlay="5">
                                     <div class="flexbox">
                                         <div>
                                             <h3 class="mb-0 mt-0">6 New</h3>
@@ -429,7 +436,7 @@ use yii\widgets\Breadcrumbs;
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="user-profile treeview">
                     <a href="index.html">
-                        <img src="../myassets/images/avatar/7.jpg" alt="user">
+                        <img src="../images/avatar/7.jpg" alt="user">
                         <span>
 				<span class="d-block font-weight-600 font-size-16">Samuel Brus</span>
 				<span class="email-id">samuel@gmail.com</span>
@@ -449,7 +456,7 @@ use yii\widgets\Breadcrumbs;
                 <li class="header nav-small-cap"><i class="mdi mdi-drag-horizontal mr-5"></i>PERSONAL</li>
 
 
-                <li class="treeview">
+                <li class="treeview active">
                     <a href="#">
                         <i class="mdi mdi-view-dashboard"></i>
                         <span>Dashboard</span>
@@ -458,15 +465,15 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="../index.html"><i class="mdi mdi-toggle-switch-off"></i>Main Dashboard</a></li>
-                        <li><a href="../index-2.html"><i class="mdi mdi-toggle-switch-off"></i>e-Commerce Dashboard</a>
-                        </li>
-                        <li><a href="../index-3.html"><i class="mdi mdi-toggle-switch-off"></i>Cryptocurrency</a></li>
-                        <li><a href="../index-4.html"><i class="mdi mdi-toggle-switch-off"></i>Analytics</a></li>
-                        <li><a href="../index-5.html"><i class="mdi mdi-toggle-switch-off"></i>Hospital</a></li>
-                        <li><a href="../index-6.html"><i class="mdi mdi-toggle-switch-off"></i>Support System</a></li>
-                        <li><a href="../index-7.html"><i class="mdi mdi-toggle-switch-off"></i>Sales Report</a></li>
-                        <li><a href="../index-8.html"><i class="mdi mdi-toggle-switch-off"></i>Music</a></li>
+                        <li><a href="index.html"><i class="mdi mdi-toggle-switch-off"></i>Main Dashboard</a></li>
+                        <li class="active"><a href="index-2.html"><i class="mdi mdi-toggle-switch-off"></i>e-Commerce
+                            Dashboard</a></li>
+                        <li><a href="index-3.html"><i class="mdi mdi-toggle-switch-off"></i>Cryptocurrency</a></li>
+                        <li><a href="index-4.html"><i class="mdi mdi-toggle-switch-off"></i>Analytics</a></li>
+                        <li><a href="index-5.html"><i class="mdi mdi-toggle-switch-off"></i>Hospital</a></li>
+                        <li><a href="index-6.html"><i class="mdi mdi-toggle-switch-off"></i>Support System</a></li>
+                        <li><a href="index-7.html"><i class="mdi mdi-toggle-switch-off"></i>Sales Report</a></li>
+                        <li><a href="index-8.html"><i class="mdi mdi-toggle-switch-off"></i>Music</a></li>
                     </ul>
                 </li>
 
@@ -479,10 +486,10 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="layout_boxed.html"><i class="mdi mdi-toggle-switch-off"></i>Boxed</a></li>
-                        <li><a href="layout_fixed.html"><i class="mdi mdi-toggle-switch-off"></i>Fixed</a></li>
-                        <li><a href="layout_collapsed_sidebar.html"><i class="mdi mdi-toggle-switch-off"></i>Mini
-                                Sidebar</a></li>
+                        <li><a href="pages/layout_boxed.html"><i class="mdi mdi-toggle-switch-off"></i>Boxed</a></li>
+                        <li><a href="pages/layout_fixed.html"><i class="mdi mdi-toggle-switch-off"></i>Fixed</a></li>
+                        <li><a href="pages/layout_collapsed_sidebar.html"><i class="mdi mdi-toggle-switch-off"></i>Mini
+                            Sidebar</a></li>
                     </ul>
                 </li>
 
@@ -495,14 +502,14 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="page_layout_inner_left_sidebar.html"><i class="mdi mdi-toggle-switch-off"></i>Inner
-                                Left Sidebar </a></li>
-                        <li><a href="page_layout_inner_right_sidebar.html"><i class="mdi mdi-toggle-switch-off"></i>Inner
-                                Right Sidebar </a></li>
-                        <li><a href="page_layout_inner_fixed_left_sidebar.html"><i
-                                        class="mdi mdi-toggle-switch-off"></i>Inner Fixed Left Sidebar </a></li>
-                        <li><a href="page_layout_inner_fixed_right_sidebar.html"><i
-                                        class="mdi mdi-toggle-switch-off"></i>Inner Fixed Right Sidebar </a></li>
+                        <li><a href="pages/page_layout_inner_left_sidebar.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Inner Left Sidebar </a></li>
+                        <li><a href="pages/page_layout_inner_right_sidebar.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Inner Right Sidebar </a></li>
+                        <li><a href="pages/page_layout_inner_fixed_left_sidebar.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Inner Fixed Left Sidebar </a></li>
+                        <li><a href="pages/page_layout_inner_fixed_right_sidebar.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Inner Fixed Right Sidebar </a></li>
                     </ul>
                 </li>
 
@@ -517,9 +524,11 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="mailbox_inbox.html"><i class="mdi mdi-toggle-switch-off"></i>Inbox</a></li>
-                        <li><a href="mailbox_compose.html"><i class="mdi mdi-toggle-switch-off"></i>Compose</a></li>
-                        <li><a href="mailbox_read_mail.html"><i class="mdi mdi-toggle-switch-off"></i>Read</a></li>
+                        <li><a href="pages/mailbox_inbox.html"><i class="mdi mdi-toggle-switch-off"></i>Inbox</a></li>
+                        <li><a href="pages/mailbox_compose.html"><i class="mdi mdi-toggle-switch-off"></i>Compose</a>
+                        </li>
+                        <li><a href="pages/mailbox_read_mail.html"><i class="mdi mdi-toggle-switch-off"></i>Read</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -532,12 +541,14 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="contact_app_chat.html"><i class="mdi mdi-toggle-switch-off"></i>Chat app</a></li>
-                        <li><a href="contact_app.html"><i class="mdi mdi-toggle-switch-off"></i>Contact / Employee</a>
+                        <li><a href="pages/contact_app_chat.html"><i class="mdi mdi-toggle-switch-off"></i>Chat app</a>
                         </li>
-                        <li><a href="contact_userlist_grid.html"><i class="mdi mdi-toggle-switch-off"></i>Userlist Grid</a>
+                        <li><a href="pages/contact_app.html"><i class="mdi mdi-toggle-switch-off"></i>Contact / Employee</a>
                         </li>
-                        <li><a href="contact_userlist.html"><i class="mdi mdi-toggle-switch-off"></i>Userlist</a></li>
+                        <li><a href="pages/contact_userlist_grid.html"><i class="mdi mdi-toggle-switch-off"></i>Userlist
+                            Grid</a></li>
+                        <li><a href="pages/contact_userlist.html"><i class="mdi mdi-toggle-switch-off"></i>Userlist</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -550,12 +561,13 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="extra_app_ticket.html"><i class="mdi mdi-toggle-switch-off"></i>Support Ticket</a>
+                        <li><a href="pages/extra_app_ticket.html"><i class="mdi mdi-toggle-switch-off"></i>Support
+                            Ticket</a></li>
+                        <li><a href="pages/extra_calendar.html"><i class="mdi mdi-toggle-switch-off"></i>Calendar</a>
                         </li>
-                        <li><a href="extra_calendar.html"><i class="mdi mdi-toggle-switch-off"></i>Calendar</a></li>
-                        <li><a href="extra_profile.html"><i class="mdi mdi-toggle-switch-off"></i>Profile</a></li>
-                        <li><a href="extra_taskboard.html"><i class="mdi mdi-toggle-switch-off"></i>Project
-                                DashBoard</a></li>
+                        <li><a href="pages/extra_profile.html"><i class="mdi mdi-toggle-switch-off"></i>Profile</a></li>
+                        <li><a href="pages/extra_taskboard.html"><i class="mdi mdi-toggle-switch-off"></i>Project
+                            DashBoard</a></li>
                     </ul>
                 </li>
 
@@ -572,23 +584,26 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="ui_badges.html"><i class="mdi mdi-toggle-switch-off"></i>Badges</a></li>
-                        <li><a href="ui_border_utilities.html"><i class="mdi mdi-toggle-switch-off"></i>Border</a></li>
-                        <li><a href="ui_buttons.html"><i class="mdi mdi-toggle-switch-off"></i>Buttons</a></li>
-                        <li><a href="ui_color_utilities.html"><i class="mdi mdi-toggle-switch-off"></i>Color</a></li>
-                        <li><a href="ui_dropdown.html"><i class="mdi mdi-toggle-switch-off"></i>Dropdown</a></li>
-                        <li><a href="ui_dropdown_grid.html"><i class="mdi mdi-toggle-switch-off"></i>Dropdown Grid</a>
+                        <li><a href="pages/ui_badges.html"><i class="mdi mdi-toggle-switch-off"></i>Badges</a></li>
+                        <li><a href="pages/ui_border_utilities.html"><i class="mdi mdi-toggle-switch-off"></i>Border</a>
                         </li>
-                        <li><a href="ui_typography.html"><i class="mdi mdi-toggle-switch-off"></i>Typography</a></li>
-                        <li><a href="ui_progress_bars.html"><i class="mdi mdi-toggle-switch-off"></i>Progress Bars</a>
+                        <li><a href="pages/ui_buttons.html"><i class="mdi mdi-toggle-switch-off"></i>Buttons</a></li>
+                        <li><a href="pages/ui_color_utilities.html"><i class="mdi mdi-toggle-switch-off"></i>Color</a>
                         </li>
-                        <li><a href="ui_grid.html"><i class="mdi mdi-toggle-switch-off"></i>Grid</a></li>
-                        <li><a href="ui_ribbons.html"><i class="mdi mdi-toggle-switch-off"></i>Ribbons</a></li>
-                        <li><a href="ui_sliders.html"><i class="mdi mdi-toggle-switch-off"></i>Sliders</a></li>
-                        <li><a href="ui_tab.html"><i class="mdi mdi-toggle-switch-off"></i>Tabs</a></li>
-                        <li><a href="ui_timeline.html"><i class="mdi mdi-toggle-switch-off"></i>Timeline</a></li>
-                        <li><a href="ui_timeline_horizontal.html"><i class="mdi mdi-toggle-switch-off"></i>Horizontal
-                                Timeline</a></li>
+                        <li><a href="pages/ui_dropdown.html"><i class="mdi mdi-toggle-switch-off"></i>Dropdown</a></li>
+                        <li><a href="pages/ui_dropdown_grid.html"><i class="mdi mdi-toggle-switch-off"></i>Dropdown Grid</a>
+                        </li>
+                        <li><a href="pages/ui_typography.html"><i class="mdi mdi-toggle-switch-off"></i>Typography</a>
+                        </li>
+                        <li><a href="pages/ui_progress_bars.html"><i class="mdi mdi-toggle-switch-off"></i>Progress Bars</a>
+                        </li>
+                        <li><a href="pages/ui_grid.html"><i class="mdi mdi-toggle-switch-off"></i>Grid</a></li>
+                        <li><a href="pages/ui_ribbons.html"><i class="mdi mdi-toggle-switch-off"></i>Ribbons</a></li>
+                        <li><a href="pages/ui_sliders.html"><i class="mdi mdi-toggle-switch-off"></i>Sliders</a></li>
+                        <li><a href="pages/ui_tab.html"><i class="mdi mdi-toggle-switch-off"></i>Tabs</a></li>
+                        <li><a href="pages/ui_timeline.html"><i class="mdi mdi-toggle-switch-off"></i>Timeline</a></li>
+                        <li><a href="pages/ui_timeline_horizontal.html"><i class="mdi mdi-toggle-switch-off"></i>Horizontal
+                            Timeline</a></li>
                     </ul>
                 </li>
 
@@ -601,16 +616,18 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="icons_fontawesome.html"><i class="mdi mdi-toggle-switch-off"></i>Font Awesome</a>
+                        <li><a href="pages/icons_fontawesome.html"><i class="mdi mdi-toggle-switch-off"></i>Font Awesome</a>
                         </li>
-                        <li><a href="icons_glyphicons.html"><i class="mdi mdi-toggle-switch-off"></i>Glyphicons</a></li>
-                        <li><a href="icons_material.html"><i class="mdi mdi-toggle-switch-off"></i>Material Icons</a>
+                        <li><a href="pages/icons_glyphicons.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Glyphicons</a></li>
+                        <li><a href="pages/icons_material.html"><i class="mdi mdi-toggle-switch-off"></i>Material Icons</a>
                         </li>
-                        <li><a href="icons_themify.html"><i class="mdi mdi-toggle-switch-off"></i>Themify Icons</a></li>
-                        <li><a href="icons_simpleline.html"><i class="mdi mdi-toggle-switch-off"></i>Simple Line
-                                Icons</a></li>
-                        <li><a href="icons_cryptocoins.html"><i class="mdi mdi-toggle-switch-off"></i>Cryptocoins Icons</a>
-                        </li>
+                        <li><a href="pages/icons_themify.html"><i class="mdi mdi-toggle-switch-off"></i>Themify
+                            Icons</a></li>
+                        <li><a href="pages/icons_simpleline.html"><i class="mdi mdi-toggle-switch-off"></i>Simple Line
+                            Icons</a></li>
+                        <li><a href="pages/icons_cryptocoins.html"><i class="mdi mdi-toggle-switch-off"></i>Cryptocoins
+                            Icons</a></li>
                     </ul>
                 </li>
 
@@ -623,20 +640,22 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="component_bootstrap_switch.html"><i class="mdi mdi-toggle-switch-off"></i>Bootstrap
-                                Switch</a></li>
-                        <li><a href="component_date_paginator.html"><i class="mdi mdi-toggle-switch-off"></i>Date
-                                Paginator</a></li>
-                        <li><a href="component_media_advanced.html"><i class="mdi mdi-toggle-switch-off"></i>Advanced
-                                Medias</a></li>
-                        <li><a href="component_modals.html"><i class="mdi mdi-toggle-switch-off"></i>Modals</a></li>
-                        <li><a href="component_nestable.html"><i class="mdi mdi-toggle-switch-off"></i>Nestable</a></li>
-                        <li><a href="component_notification.html"><i class="mdi mdi-toggle-switch-off"></i>Notification</a>
+                        <li><a href="pages/component_bootstrap_switch.html"><i class="mdi mdi-toggle-switch-off"></i>Bootstrap
+                            Switch</a></li>
+                        <li><a href="pages/component_date_paginator.html"><i class="mdi mdi-toggle-switch-off"></i>Date
+                            Paginator</a></li>
+                        <li><a href="pages/component_media_advanced.html"><i class="mdi mdi-toggle-switch-off"></i>Advanced
+                            Medias</a></li>
+                        <li><a href="pages/component_modals.html"><i class="mdi mdi-toggle-switch-off"></i>Modals</a>
                         </li>
-                        <li><a href="component_portlet_draggable.html"><i class="mdi mdi-toggle-switch-off"></i>Draggable
-                                Portlets</a></li>
-                        <li><a href="component_sweatalert.html"><i class="mdi mdi-toggle-switch-off"></i>Sweet Alert</a>
+                        <li><a href="pages/component_nestable.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Nestable</a></li>
+                        <li><a href="pages/component_notification.html"><i class="mdi mdi-toggle-switch-off"></i>Notification</a>
                         </li>
+                        <li><a href="pages/component_portlet_draggable.html"><i class="mdi mdi-toggle-switch-off"></i>Draggable
+                            Portlets</a></li>
+                        <li><a href="pages/component_sweatalert.html"><i class="mdi mdi-toggle-switch-off"></i>Sweet
+                            Alert</a></li>
                     </ul>
                 </li>
 
@@ -649,11 +668,12 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="box_cards.html"><i class="mdi mdi-toggle-switch-off"></i>User Card</a></li>
-                        <li><a href="box_advanced.html"><i class="mdi mdi-toggle-switch-off"></i>Advanced Card</a></li>
-                        <li><a href="box_basic.html"><i class="mdi mdi-toggle-switch-off"></i>Basic Card</a></li>
-                        <li><a href="box_color.html"><i class="mdi mdi-toggle-switch-off"></i>Card Color</a></li>
-                        <li><a href="box_group.html"><i class="mdi mdi-toggle-switch-off"></i>Card Group</a></li>
+                        <li><a href="pages/box_cards.html"><i class="mdi mdi-toggle-switch-off"></i>User Card</a></li>
+                        <li><a href="pages/box_advanced.html"><i class="mdi mdi-toggle-switch-off"></i>Advanced Card</a>
+                        </li>
+                        <li><a href="pages/box_basic.html"><i class="mdi mdi-toggle-switch-off"></i>Basic Card</a></li>
+                        <li><a href="pages/box_color.html"><i class="mdi mdi-toggle-switch-off"></i>Card Color</a></li>
+                        <li><a href="pages/box_group.html"><i class="mdi mdi-toggle-switch-off"></i>Card Group</a></li>
                     </ul>
                 </li>
 
@@ -666,13 +686,15 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="widgets_blog.html"><i class="mdi mdi-toggle-switch-off"></i>Blog</a></li>
-                        <li><a href="widgets_chart.html"><i class="mdi mdi-toggle-switch-off"></i>Chart</a></li>
-                        <li><a href="widgets_list.html"><i class="mdi mdi-toggle-switch-off"></i>List</a></li>
-                        <li><a href="widgets_social.html"><i class="mdi mdi-toggle-switch-off"></i>Social</a></li>
-                        <li><a href="widgets_statistic.html"><i class="mdi mdi-toggle-switch-off"></i>Statistic</a></li>
-                        <li><a href="widgets_weather.html"><i class="mdi mdi-toggle-switch-off"></i>Weather</a></li>
-                        <li><a href="widgets.html"><i class="mdi mdi-toggle-switch-off"></i>Widgets</a></li>
+                        <li><a href="pages/widgets_blog.html"><i class="mdi mdi-toggle-switch-off"></i>Blog</a></li>
+                        <li><a href="pages/widgets_chart.html"><i class="mdi mdi-toggle-switch-off"></i>Chart</a></li>
+                        <li><a href="pages/widgets_list.html"><i class="mdi mdi-toggle-switch-off"></i>List</a></li>
+                        <li><a href="pages/widgets_social.html"><i class="mdi mdi-toggle-switch-off"></i>Social</a></li>
+                        <li><a href="pages/widgets_statistic.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Statistic</a></li>
+                        <li><a href="pages/widgets_weather.html"><i class="mdi mdi-toggle-switch-off"></i>Weather</a>
+                        </li>
+                        <li><a href="pages/widgets.html"><i class="mdi mdi-toggle-switch-off"></i>Widgets</a></li>
                     </ul>
                 </li>
 
@@ -689,21 +711,22 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="forms_advanced.html"><i class="mdi mdi-toggle-switch-off"></i>Advanced Elements</a>
+                        <li><a href="pages/forms_advanced.html"><i class="mdi mdi-toggle-switch-off"></i>Advanced
+                            Elements</a></li>
+                        <li><a href="pages/forms_code_editor.html"><i class="mdi mdi-toggle-switch-off"></i>Code Editor</a>
                         </li>
-                        <li><a href="forms_code_editor.html"><i class="mdi mdi-toggle-switch-off"></i>Code Editor</a>
+                        <li><a href="pages/forms_editor_markdown.html"><i class="mdi mdi-toggle-switch-off"></i>Markdown</a>
                         </li>
-                        <li><a href="forms_editor_markdown.html"><i class="mdi mdi-toggle-switch-off"></i>Markdown</a>
+                        <li><a href="pages/forms_editors.html"><i class="mdi mdi-toggle-switch-off"></i>Editors</a></li>
+                        <li><a href="pages/forms_validation.html"><i class="mdi mdi-toggle-switch-off"></i>Form
+                            Validation</a></li>
+                        <li><a href="pages/forms_wizard.html"><i class="mdi mdi-toggle-switch-off"></i>Form Wizard</a>
                         </li>
-                        <li><a href="forms_editors.html"><i class="mdi mdi-toggle-switch-off"></i>Editors</a></li>
-                        <li><a href="forms_validation.html"><i class="mdi mdi-toggle-switch-off"></i>Form Validation</a>
+                        <li><a href="pages/forms_general.html"><i class="mdi mdi-toggle-switch-off"></i>General Elements</a>
                         </li>
-                        <li><a href="forms_wizard.html"><i class="mdi mdi-toggle-switch-off"></i>Form Wizard</a></li>
-                        <li><a href="forms_general.html"><i class="mdi mdi-toggle-switch-off"></i>General Elements</a>
-                        </li>
-                        <li><a href="forms_mask.html"><i class="mdi mdi-toggle-switch-off"></i>Formatter</a></li>
-                        <li><a href="forms_xeditable.html"><i class="mdi mdi-toggle-switch-off"></i>Xeditable Editor</a>
-                        </li>
+                        <li><a href="pages/forms_mask.html"><i class="mdi mdi-toggle-switch-off"></i>Formatter</a></li>
+                        <li><a href="pages/forms_xeditable.html"><i class="mdi mdi-toggle-switch-off"></i>Xeditable
+                            Editor</a></li>
                     </ul>
                 </li>
 
@@ -716,11 +739,14 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="tables_simple.html"><i class="mdi mdi-toggle-switch-off"></i>Simple tables</a></li>
-                        <li><a href="tables_data.html"><i class="mdi mdi-toggle-switch-off"></i>Data tables</a></li>
-                        <li><a href="tables_editable.html"><i class="mdi mdi-toggle-switch-off"></i>Editable Tables</a>
+                        <li><a href="pages/tables_simple.html"><i class="mdi mdi-toggle-switch-off"></i>Simple
+                            tables</a></li>
+                        <li><a href="pages/tables_data.html"><i class="mdi mdi-toggle-switch-off"></i>Data tables</a>
                         </li>
-                        <li><a href="tables_color.html"><i class="mdi mdi-toggle-switch-off"></i>Table Color</a></li>
+                        <li><a href="pages/tables_editable.html"><i class="mdi mdi-toggle-switch-off"></i>Editable
+                            Tables</a></li>
+                        <li><a href="pages/tables_color.html"><i class="mdi mdi-toggle-switch-off"></i>Table Color</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -728,45 +754,47 @@ use yii\widgets\Breadcrumbs;
                 <li class="header nav-small-cap"><i class="mdi mdi-drag-horizontal mr-5"></i>CHARTS</li>
 
                 <li>
-                    <a href="charts_chartjs.html">
+                    <a href="pages/charts_chartjs.html">
                         <i class="mdi mdi-chart-bar"></i>
                         <span>ChartJS</span>
                     </a>
                 </li>
                 <li>
-                    <a href="charts_flot.html">
+                    <a href="pages/charts_flot.html">
                         <i class="mdi mdi-chart-bubble"></i>
                         <span>Flot</span>
                     </a>
                 </li>
                 <li>
-                    <a href="charts_inline.html">
+                    <a href="pages/charts_inline.html">
                         <i class="mdi mdi-chart-donut"></i>
                         <span>Inline charts</span>
                     </a>
                 </li>
                 <li>
-                    <a href="charts_morris.html">
+                    <a href="pages/charts_morris.html">
                         <i class="mdi mdi-chart-gantt"></i>
                         <span>Morris</span>
                     </a>
                 </li>
                 <li>
-                    <a href="charts_peity.html">
+                    <a href="pages/charts_peity.html">
                         <i class="mdi mdi-chart-bubble"></i>
                         <span>Peity</span>
                     </a>
                 </li>
                 <li>
-                    <a href="charts_chartist.html">
+                    <a href="pages/charts_chartist.html">
                         <i class="mdi mdi-chart-line"></i>
                         <span>Chartist</span>
                     </a>
                 </li>
+
+
                 <li class="header nav-small-cap"><i class="mdi mdi-drag-horizontal mr-5"></i>EXTRA COMPONENTS</li>
 
                 <li>
-                    <a href="email_index.html">
+                    <a href="pages/email_index.html">
                         <i class="mdi mdi-email"></i>
                         <span>Emails</span>
                     </a>
@@ -781,8 +809,8 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="map_google.html"><i class="mdi mdi-toggle-switch-off"></i>Google Map</a></li>
-                        <li><a href="map_vector.html"><i class="mdi mdi-toggle-switch-off"></i>Vector Map</a></li>
+                        <li><a href="pages/map_google.html"><i class="mdi mdi-toggle-switch-off"></i>Google Map</a></li>
+                        <li><a href="pages/map_vector.html"><i class="mdi mdi-toggle-switch-off"></i>Vector Map</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -794,9 +822,9 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="extension_fullscreen.html"><i class="mdi mdi-toggle-switch-off"></i>Fullscreen</a>
+                        <li><a href="pages/extension_fullscreen.html"><i class="mdi mdi-toggle-switch-off"></i>Fullscreen</a>
                         </li>
-                        <li><a href="extension_pace.html"><i class="mdi mdi-toggle-switch-off"></i>Pace</a></li>
+                        <li><a href="pages/extension_pace.html"><i class="mdi mdi-toggle-switch-off"></i>Pace</a></li>
                     </ul>
                 </li>
 
@@ -813,17 +841,18 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="ecommerce_products.html"><i class="mdi mdi-toggle-switch-off"></i>Products</a></li>
-                        <li><a href="ecommerce_cart.html"><i class="mdi mdi-toggle-switch-off"></i>Products Cart</a>
-                        </li>
-                        <li><a href="ecommerce_products_edit.html"><i class="mdi mdi-toggle-switch-off"></i>Products
-                                Edit</a></li>
-                        <li><a href="ecommerce_details.html"><i class="mdi mdi-toggle-switch-off"></i>Product
-                                Details</a></li>
-                        <li><a href="ecommerce_orders.html"><i class="mdi mdi-toggle-switch-off"></i>Product Orders</a>
-                        </li>
-                        <li><a href="ecommerce_checkout.html"><i class="mdi mdi-toggle-switch-off"></i>Products Checkout</a>
-                        </li>
+                        <li><a href="pages/ecommerce_products.html"><i
+                                class="mdi mdi-toggle-switch-off"></i>Products</a></li>
+                        <li><a href="pages/ecommerce_cart.html"><i class="mdi mdi-toggle-switch-off"></i>Products
+                            Cart</a></li>
+                        <li><a href="pages/ecommerce_products_edit.html"><i class="mdi mdi-toggle-switch-off"></i>Products
+                            Edit</a></li>
+                        <li><a href="pages/ecommerce_details.html"><i class="mdi mdi-toggle-switch-off"></i>Product
+                            Details</a></li>
+                        <li><a href="pages/ecommerce_orders.html"><i class="mdi mdi-toggle-switch-off"></i>Product
+                            Orders</a></li>
+                        <li><a href="pages/ecommerce_checkout.html"><i class="mdi mdi-toggle-switch-off"></i>Products
+                            Checkout</a></li>
                     </ul>
                 </li>
 
@@ -836,13 +865,16 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="auth_login.html"><i class="mdi mdi-toggle-switch-off"></i>Login</a></li>
-                        <li><a href="auth_login2.html"><i class="mdi mdi-toggle-switch-off"></i>Login 2</a></li>
-                        <li><a href="auth_register.html"><i class="mdi mdi-toggle-switch-off"></i>Register</a></li>
-                        <li><a href="auth_register2.html"><i class="mdi mdi-toggle-switch-off"></i>Register 2</a></li>
-                        <li><a href="auth_lockscreen.html"><i class="mdi mdi-toggle-switch-off"></i>Lockscreen</a></li>
-                        <li><a href="auth_user_pass.html"><i class="mdi mdi-toggle-switch-off"></i>Recover password</a>
+                        <li><a href="pages/auth_login.html"><i class="mdi mdi-toggle-switch-off"></i>Login</a></li>
+                        <li><a href="pages/auth_login2.html"><i class="mdi mdi-toggle-switch-off"></i>Login 2</a></li>
+                        <li><a href="pages/auth_register.html"><i class="mdi mdi-toggle-switch-off"></i>Register</a>
                         </li>
+                        <li><a href="pages/auth_register2.html"><i class="mdi mdi-toggle-switch-off"></i>Register 2</a>
+                        </li>
+                        <li><a href="pages/auth_lockscreen.html"><i class="mdi mdi-toggle-switch-off"></i>Lockscreen</a>
+                        </li>
+                        <li><a href="pages/auth_user_pass.html"><i class="mdi mdi-toggle-switch-off"></i>Recover
+                            password</a></li>
                     </ul>
                 </li>
 
@@ -855,8 +887,9 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="invoice.html"><i class="mdi mdi-toggle-switch-off"></i>Invoice</a></li>
-                        <li><a href="invoicelist.html"><i class="mdi mdi-toggle-switch-off"></i>Invoice List</a></li>
+                        <li><a href="pages/invoice.html"><i class="mdi mdi-toggle-switch-off"></i>Invoice</a></li>
+                        <li><a href="pages/invoicelist.html"><i class="mdi mdi-toggle-switch-off"></i>Invoice List</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -869,12 +902,12 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="error_400.html"><i class="mdi mdi-toggle-switch-off"></i>Error 400</a></li>
-                        <li><a href="error_403.html"><i class="mdi mdi-toggle-switch-off"></i>Error 403</a></li>
-                        <li><a href="error_404.html"><i class="mdi mdi-toggle-switch-off"></i>Error 404</a></li>
-                        <li><a href="error_500.html"><i class="mdi mdi-toggle-switch-off"></i>Error 500</a></li>
-                        <li><a href="error_503.html"><i class="mdi mdi-toggle-switch-off"></i>Error 503</a></li>
-                        <li><a href="error_maintenance.html"><i class="mdi mdi-toggle-switch-off"></i>Maintenance</a>
+                        <li><a href="pages/error_400.html"><i class="mdi mdi-toggle-switch-off"></i>Error 400</a></li>
+                        <li><a href="pages/error_403.html"><i class="mdi mdi-toggle-switch-off"></i>Error 403</a></li>
+                        <li><a href="pages/error_404.html"><i class="mdi mdi-toggle-switch-off"></i>Error 404</a></li>
+                        <li><a href="pages/error_500.html"><i class="mdi mdi-toggle-switch-off"></i>Error 500</a></li>
+                        <li><a href="pages/error_503.html"><i class="mdi mdi-toggle-switch-off"></i>Error 503</a></li>
+                        <li><a href="pages/error_maintenance.html"><i class="mdi mdi-toggle-switch-off"></i>Maintenance</a>
                         </li>
                     </ul>
                 </li>
@@ -888,16 +921,18 @@ use yii\widgets\Breadcrumbs;
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="sample_blank.html"><i class="mdi mdi-toggle-switch-off"></i>Blank</a></li>
-                        <li><a href="sample_coming_soon.html"><i class="mdi mdi-toggle-switch-off"></i>Coming Soon</a>
+                        <li><a href="pages/sample_blank.html"><i class="mdi mdi-toggle-switch-off"></i>Blank</a></li>
+                        <li><a href="pages/sample_coming_soon.html"><i class="mdi mdi-toggle-switch-off"></i>Coming Soon</a>
                         </li>
-                        <li><a href="sample_custom_scroll.html"><i class="mdi mdi-toggle-switch-off"></i>Custom Scrolls</a>
+                        <li><a href="pages/sample_custom_scroll.html"><i class="mdi mdi-toggle-switch-off"></i>Custom
+                            Scrolls</a></li>
+                        <li><a href="pages/sample_faq.html"><i class="mdi mdi-toggle-switch-off"></i>FAQ</a></li>
+                        <li><a href="pages/sample_gallery.html"><i class="mdi mdi-toggle-switch-off"></i>Gallery</a>
                         </li>
-                        <li><a href="sample_faq.html"><i class="mdi mdi-toggle-switch-off"></i>FAQ</a></li>
-                        <li><a href="sample_gallery.html"><i class="mdi mdi-toggle-switch-off"></i>Gallery</a></li>
-                        <li><a href="sample_lightbox.html"><i class="mdi mdi-toggle-switch-off"></i>Lightbox Popup</a>
+                        <li><a href="pages/sample_lightbox.html"><i class="mdi mdi-toggle-switch-off"></i>Lightbox Popup</a>
                         </li>
-                        <li><a href="sample_pricing.html"><i class="mdi mdi-toggle-switch-off"></i>Pricing</a></li>
+                        <li><a href="pages/sample_pricing.html"><i class="mdi mdi-toggle-switch-off"></i>Pricing</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -940,7 +975,7 @@ use yii\widgets\Breadcrumbs;
                 </li>
 
                 <li>
-                    <a href="auth_login.html">
+                    <a href="pages/auth_login.html">
                         <i class="mdi mdi-directions"></i>
                         <span>Log Out</span>
                     </a>
@@ -950,37 +985,32 @@ use yii\widgets\Breadcrumbs;
         </section>
     </aside>
 
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="d-flex align-items-center">
-                <div class="mr-auto">
-                    <h3 class="page-title">Blank page</h3>
+                <div class="mr-auto w-p50">
+                    <h3 class="page-title">e-Commerce</h3>
                     <div class="d-inline-block align-items-center">
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Sample Page</li>
-                                <li class="breadcrumb-item active" aria-current="page">Blank page</li>
+                                <li class="breadcrumb-item active" aria-current="page">Control</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
-                <div class="right-title">
-                    <div class="dropdown">
-                        <button class="btn btn-outline dropdown-toggle no-caret" type="button" data-toggle="dropdown"><i
-                                    class="mdi mdi-dots-horizontal"></i></button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-share"></i>Activity</a>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-email"></i>Messages</a>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-help-circle-outline"></i>FAQ</a>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-settings"></i>Support</a>
-                            <div class="dropdown-divider"></div>
-                            <button type="button" class="btn btn-success">Submit</button>
-                        </div>
-                    </div>
+                <div class="right-title w-170">
+				<span class="subheader_daterange font-weight-600" id="dashboard_daterangepicker">
+					<span class="subheader_daterange-label">
+						<span class="subheader_daterange-title"></span>
+						<span class="subheader_daterange-date text-primary"></span>
+					</span>
+					<a href="#" class="btn btn-sm btn-primary">
+						<i class="fa fa-angle-down"></i>
+					</a>
+				</span>
                 </div>
             </div>
         </div>
@@ -988,33 +1018,10 @@ use yii\widgets\Breadcrumbs;
         <!-- Main content -->
         <section class="content">
 
-            <!-- Default box -->
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Title</h3>
-
-                    <ul class="box-controls pull-right">
-                        <li><a class="box-btn-close" href="#"></a></li>
-                        <li><a class="box-btn-slide" href="#"></a></li>
-                        <li><a class="box-btn-fullscreen" href="#"></a></li>
-                    </ul>
-                </div>
-                <div class="box-body">
-                    This is some text within a card block.
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    Footer
-                </div>
-                <!-- /.box-footer-->
-            </div>
-            <!-- /.box -->
-
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
     <footer class="main-footer">
         <div class="pull-right d-none d-sm-inline-block">
             <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
@@ -1028,6 +1035,7 @@ use yii\widgets\Breadcrumbs;
         </div>
         &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
     </footer>
+
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-light">
 
@@ -1215,12 +1223,58 @@ use yii\widgets\Breadcrumbs;
 
     <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
-</div>
-<?php $this->endBody() ?>
 
+</div>
+<!-- ./wrapper -->
+
+
+<!-- jQuery 3 -->
+<script src="../assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="../assets/vendor_components/jquery-ui/jquery-ui.js"></script>
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
+
+<!-- popper -->
+<script src="../assets/vendor_components/popper/dist/popper.min.js"></script>
+
+<!-- date-range-picker -->
+<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+<script src="../assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<!-- Bootstrap 4.0-->
+<script src="../assets/vendor_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- Slimscroll -->
+<script src="../assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+<!-- echarts -->
+<script src="../assets/vendor_components/echarts/dist/echarts-en.min.js"></script>
+<script src="../assets/vendor_components/echarts/echarts-liquidfill.min.js"></script>
+
+<!-- FastClick -->
+<script src="../assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+<!-- Morris.js charts -->
+<script src="../assets/vendor_components/raphael/raphael.min.js"></script>
+<script src="../assets/vendor_components/morris.js/morris.min.js"></script>
+
+<!-- This is data table -->
+<script src="../assets/vendor_components/datatable/datatables.min.js"></script>
+
+<!-- Superieur Admin App -->
+<script src="js/template.js"></script>
+
+<!-- Superieur Admin dashboard demo (This is only for demo purposes) -->
+<script src="js/pages/dashboard2.js"></script>
+
+<!-- Superieur Admin for demo purposes -->
+<script src="js/demo.js"></script>
+
+
 </body>
 </html>
-<?php $this->endPage() ?>
