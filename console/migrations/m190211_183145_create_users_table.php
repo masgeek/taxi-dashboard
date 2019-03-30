@@ -18,7 +18,7 @@ class m190211_183145_create_users_table extends \console\models\BaseMigration
             'user_id' => $this->primaryKey(20),
             'username' => $this->string(20)->unique()->notNull()->comment('Username'),
             'password' => $this->string(300)->unique()->notNull(),
-            'user_type' => $this->string(50)->notNull()->comment('User Tpe'),
+            'user_type' => $this->string(20)->notNull()->comment('User TYpe'),
             'account_active' => $this->boolean()->defaultValue(true)->comment('Account Active'),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
