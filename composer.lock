@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec58d7ff78999eae2d54e1bf1333b0e4",
+    "content-hash": "b4084698231228f84981f8933ce52a9a",
     "packages": [
         {
             "name": "bower-asset/blueimp-canvas-to-blob",
@@ -95,7 +95,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twbs/bootstrap.git",
+                "url": "https://github.com/twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -155,7 +155,7 @@
             "version": "1.12.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/components/jqueryui.git",
+                "url": "git@github.com:components/jqueryui.git",
                 "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
             },
             "dist": {
@@ -3828,16 +3828,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.16",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "789de9783d41e6ca10fffc3644a43a764f79b399"
+                "reference": "b56159228c3b4990e38cf41ddd69af27ab015bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/789de9783d41e6ca10fffc3644a43a764f79b399",
-                "reference": "789de9783d41e6ca10fffc3644a43a764f79b399",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b56159228c3b4990e38cf41ddd69af27ab015bea",
+                "reference": "b56159228c3b4990e38cf41ddd69af27ab015bea",
                 "shasum": ""
             },
             "require": {
@@ -3924,7 +3924,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-01-30T23:54:16+00:00"
+            "time": "2019-03-22T21:26:26+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -3988,24 +3988,24 @@
         },
         {
             "name": "yiisoft/yii2-bootstrap4",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap4.git",
-                "reference": "b8798b1e3a7c136723323e15407b1680defc3abf"
+                "reference": "c2c1277d720214e433ef915a6a45316b54d4be3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/b8798b1e3a7c136723323e15407b1680defc3abf",
-                "reference": "b8798b1e3a7c136723323e15407b1680defc3abf",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/c2c1277d720214e433ef915a6a45316b54d4be3e",
+                "reference": "c2c1277d720214e433ef915a6a45316b54d4be3e",
                 "shasum": ""
             },
             "require": {
-                "npm-asset/bootstrap": "~4.2",
+                "npm-asset/bootstrap": "^4.2",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "*",
+                "phpunit/phpunit": "<7",
                 "yiisoft/yii2-coding-standards": "~2.0"
             },
             "type": "yii2-extension",
@@ -4053,7 +4053,7 @@
                 "bootstrap4",
                 "yii2"
             ],
-            "time": "2019-01-28T21:56:32+00:00"
+            "time": "2019-03-17T14:50:31+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",

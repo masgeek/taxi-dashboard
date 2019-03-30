@@ -24,8 +24,8 @@ return [
                     'userClassName' => 'common\models\login\User',
                     //'searchClass' => 'common\models\search\UserSearch',
                     'idField' => 'id',
-                    'usernameField' => 'USER_NAME',
-                    'fullnameField' => 'USER_NAME',
+                    'usernameField' => 'user_name',
+                    'fullnameField' => 'user_name',
                     'extraColumns' => [
                         [
                             'attribute' => 'email',
@@ -38,16 +38,15 @@ return [
                     ],
                 ],
             ],
-        ],
-        'reports' => [
-            'class' => 'backend\modules\reports\Module',
-            'defaultRoute' => 'report',
-        ],
-        'setup' => [
-            'class' => 'backend\modules\setup\Module',
-        ],
+        ]
     ],
     'components' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => ['@app/views' => '@app/themes/super-theme'],
+                'baseUrl' => '@web/themes/super-theme',
+            ],
+        ],
         'user' => [
             'identityClass' => 'common\models\login\User',
             'enableAutoLogin' => true,

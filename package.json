@@ -33,6 +33,7 @@
     "clean": "yarn autoclean --force",
     "frontend-dev": "php -S 0.0.0.0:8000 -t frontend/",
     "backend-dev": "php -S 0.0.0.0:8001 -t backend/",
-    "api-dev": "php -S 0.0.0.0:8002"
+    "api-dev": "php -S 0.0.0.0:8002",
+    "backend-theme": "php -S 0.0.0.0:8003  -t backend/themes/main"
   }
 }

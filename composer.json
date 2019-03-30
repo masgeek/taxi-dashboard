@@ -1,6 +1,6 @@
 {
-  "name": "masgeek/pizzaout-upgrade",
-  "description": "Back Office Upgrade to an existing project for pizza ordering and delivery",
+  "name": "masgeek/taxi",
+  "description": "Taxi hailing dashboard and API",
   "authors": [
     {
       "name": "Sammy Barasa",
@@ -16,7 +16,7 @@
   ],
   "homepage": "http://demo.pizzaout.so",
   "type": "project",
-  "license": "MIT",
+  "license": "proprietary",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
@@ -35,9 +35,9 @@
     "yidas/yii2-fontawesome": "^2.0",
     "yii2assets/yii2-printthis": "^1.0",
     "yiimaker/yii2-email-templates": "^4.1",
-    "yiisoft/yii2": "~2.0.6",
+    "yiisoft/yii2": "~2.0.17",
     "yiisoft/yii2-bootstrap": "^2.0",
-    "yiisoft/yii2-bootstrap4": "^2.0",
+    "yiisoft/yii2-bootstrap4": "~2.0.1",
     "yiisoft/yii2-httpclient": "^2.0",
     "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0"
   },
@@ -62,13 +62,11 @@
     }
   ],
   "scripts": {
-    "pre-update-cmd": [
-    ],
+    "pre-update-cmd": [],
     "post-create-project-cmd": [
       "yii\\composer\\Installer::postCreateProject"
     ],
-    "post-install-cmd": [
-    ],
+    "post-install-cmd": [],
     "post-update-cmd": [
       "npm link gulp",
       "gulp"
