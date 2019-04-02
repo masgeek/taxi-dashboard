@@ -1,4 +1,6 @@
 <?php
+Yii::setAlias('@myassets', dirname(dirname(__DIR__)) . '/api');
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),

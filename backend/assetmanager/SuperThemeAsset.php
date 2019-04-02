@@ -15,9 +15,9 @@ use yii\web\AssetBundle;
  */
 class SuperThemeAsset extends AssetBundle
 {
-    public $sourcePath = __DIR__ . '/../myassets';
-    //public $basePath = '@webroot';
-    //public $baseUrl = '@web';
+    //public $sourcePath = __DIR__ . '/../myassets';
+    public $basePath = '@webroot';
+    public $baseUrl = '@web';
 
 
     public $publishOptions = [
@@ -25,15 +25,26 @@ class SuperThemeAsset extends AssetBundle
         'linkAssets' => true,
     ];
     public $css = [
-        'css/bootstrap-extend.css',
-        'css/master_style.css',
-        'css/skins/_all-skins.css',
+        'myassets/css/bootstrap-extend.css',
+        'myassets/css/master_style.css',
+        'myassets/css/skins/_all-skins.css',
+
+        'myassets/icons/simple-line-icons/css/simple-line-icons.css',
+        'myassets/icons/material-design-iconic-font/css/materialdesignicons.css',
+        'myassets/icons/themify-icons/themify-icons.css',
+        'myassets/icons/linea-icons/linea.css',
+        'myassets/icons/glyphicons/glyphicon.css',
+        'myassets/icons/flag-icon/css/flag-icon.css',
+        'myassets/icons/cryptocoins-master/webfont/cryptocoins.css',
+        'myassets/icons/ionicons/css/ionicons.css',
+        'myassets/css/animate/animate.css',
+
     ];
 
     public $js = [
-        'js/template.js',
-        #'js/pages/dashboard2.js',
-        'js/demo.js'
+        'myassets/js/popper/dist/popper.min.js',
+        'myassets/js/jquery-slimscroll/jquery.slimscroll.min.js',
+        'myassets/js/template.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

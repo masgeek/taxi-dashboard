@@ -20,9 +20,9 @@ class SuperBowerAsset extends AssetBundle
     ];
 
     public $css = [
-        'ionicons/css/ionicons.css',
-        'simple-line-icons/css/simple-line-icons.css',
-        'material-design-iconic-font/dist/css/material-design-iconic-font.css'
+        '//fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i',
+        //'simple-line-icons/css/simple-line-icons.css',
+        //'material-design-iconic-font/dist/css/material-design-iconic-font.css',
         //'assets/vendor_components/bootstrap-daterangepicker/daterangepicker.css',
         //'assets/vendor_components/morris.js/morris.css',
         //'assets/vendor_components/datatable/datatables.min.css'
