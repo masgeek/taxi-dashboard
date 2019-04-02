@@ -226,9 +226,9 @@ class User extends BaseUser implements IdentityInterface
         return $this->USER_NAME;
     }
 
-    public function getFullNames()
+    public function getFullName()
     {
-        return $this->SURNAME . ', ' . $this->OTHER_NAMES;
+        return "John Doe";
     }
 
     public function getEmailAddress()

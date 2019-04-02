@@ -8,6 +8,7 @@
  */
 
 /* @var $this \yii\web\View */
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <!-- Default box -->

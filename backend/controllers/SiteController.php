@@ -77,6 +77,7 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
+        $this->view->title = 'About';
         return $this->render('about');
     }
 

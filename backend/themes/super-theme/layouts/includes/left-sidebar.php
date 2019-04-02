@@ -5,6 +5,9 @@
  * Date: 3/30/2019
  * Time: 11:43 PM
  */
+
+//$home = \yii\helpers\Url::toRoute(['//site']);
+use yii\helpers\Html;
 ?>
 <aside class="main-sidebar">
     <!-- sidebar-->
@@ -13,15 +16,14 @@
         <!-- sidebar menu-->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="user-profile treeview">
-                <a href="index.html">
-                    <img src="../myassets/images/avatar/7.jpg" alt="user">
+                <a href="<?= Yii::$app->homeUrl ?>">
+                    <img src="../myassets/images/avatar/8.jpg" alt="user">
                     <span>
-				<span class="d-block font-weight-600 font-size-16">Samuel Brus</span>
-				<span class="email-id">samuel@gmail.com</span>
-			  </span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
+                        <span class="d-block font-weight-600 font-size-16"><?= Yii::$app->user->identity ?></span>
+                        <br/>
+                        <span class="email-id">samuel@gmail.com</span>
+                    </span>
+                    <span class="pull-right-container"><i class="fa fa-angle-right pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="javascript:void()"><i class="fa fa-user mr-5"></i>My Profile </a></li>
@@ -43,15 +45,13 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../index.html"><i class="mdi mdi-toggle-switch-off"></i>Main Dashboard</a></li>
-                    <li><a href="../index-2.html"><i class="mdi mdi-toggle-switch-off"></i>e-Commerce Dashboard</a>
+                    <li>
+                        <?= Html::a('<i class="mdi mdi-toggle-switch-off"></i>Main Dashboard', [
+                            '//site/dashboard'
+                        ], [
+                            'class' => 'sidebar-link',
+                        ]) ?>
                     </li>
-                    <li><a href="../index-3.html"><i class="mdi mdi-toggle-switch-off"></i>Cryptocurrency</a></li>
-                    <li><a href="../index-4.html"><i class="mdi mdi-toggle-switch-off"></i>Analytics</a></li>
-                    <li><a href="../index-5.html"><i class="mdi mdi-toggle-switch-off"></i>Hospital</a></li>
-                    <li><a href="../index-6.html"><i class="mdi mdi-toggle-switch-off"></i>Support System</a></li>
-                    <li><a href="../index-7.html"><i class="mdi mdi-toggle-switch-off"></i>Sales Report</a></li>
-                    <li><a href="../index-8.html"><i class="mdi mdi-toggle-switch-off"></i>Music</a></li>
                 </ul>
             </li>
 

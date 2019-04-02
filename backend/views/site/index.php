@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Dashboard';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- Default box -->
 <div class="box">
