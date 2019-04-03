@@ -5,25 +5,22 @@ namespace common\models;
 use \common\models\base\UserType as BaseUserType;
 
 /**
- * This is the model class for table "user_type".
+ * This is the model class for table "tb_user_type".
  */
 class UserType extends BaseUserType
 {
     /**
-     * @param array $excludeList
-     * @return array
+     * @inheritdoc
      */
-    public static function GetUserTypes(array $excludeList = ['ADMIN', 'RIDER'])
+    public function rules()
     {
-        $userType = self::find()
-            ->where(['NOT IN', 'USER_TYPE_NAME', $excludeList])
-            ->all();
-
-        $userTypeArr = [];
-        foreach ($userType as $key => $user_type_model) {
-            $userTypeArr[$user_type_model->USER_TYPE_ID] = $user_type_model->USER_TYPE_NAME;
-        }
-
-        return $userTypeArr;
+        return array_replace_recursive(parent::rules(),
+	    [
+            [['user_type'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['user_type'], 'string', 'max' => 20],
+            [['user_type'], 'unique']
+        ]);
     }
+	
 }

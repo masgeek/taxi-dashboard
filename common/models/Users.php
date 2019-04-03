@@ -9,20 +9,21 @@ use \common\models\base\Users as BaseUsers;
  */
 class Users extends BaseUsers
 {
-    public $reCaptcha;
-    public $status;
-
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
-        $rules = parent::rules();
-
-        $rules[] = [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::class];
-
-        return $rules;
+        return array_replace_recursive(parent::rules(),
+	    [
+            [['username', 'password', 'user_type'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['username', 'user_type'], 'string', 'max' => 20],
+            [['password'], 'string', 'max' => 300],
+            [['account_active'], 'string', 'max' => 1],
+            [['username'], 'unique'],
+            [['password'], 'unique']
+        ]);
     }
-
-    public function getUserType()
-    {
-        return UserType::findOne($this->USER_TYPE)->USER_TYPE_NAME;
-    }
+	
 }

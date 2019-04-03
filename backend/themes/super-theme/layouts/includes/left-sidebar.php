@@ -48,14 +48,14 @@ use yii\helpers\Html;
             <li class="treeview">
                 <a href="#">
                     <i class="mdi mdi-car"></i>
-                    <span>Cars</span>
+                    <span>Vehicles</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <?= Html::a('<i class="mdi mdi-toggle-switch-off"></i>Manage Cars', [
+                        <?= Html::a('<i class="mdi mdi-toggle-switch-off"></i>Manage Vehicles', [
                             '//cars/manage'
                         ], [
                             'class' => 'sidebar-link',

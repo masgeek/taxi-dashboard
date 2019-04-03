@@ -5,50 +5,54 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the model class for table "user_type".
+ * This is the base model class for table "{{%user_type}}".
  *
- * @property int $USER_TYPE_ID
- * @property string $USER_TYPE_NAME
+ * @property string $user_type
+ * @property string $created_at
+ * @property string $updated_at
  *
- * @property Users[] $users
+ * @property \common\models\Users[] $users
  */
 class UserType extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'user_type';
-    }
+    use \mootensai\relation\RelationTrait;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['USER_TYPE_NAME'], 'required'],
-            [['USER_TYPE_NAME'], 'string', 'max' => 255],
+            [['user_type'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['user_type'], 'string', 'max' => 20],
+            [['user_type'], 'unique']
         ];
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%user_type}}';
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'USER_TYPE_ID' => 'U S E R T Y P E I D',
-            'USER_TYPE_NAME' => 'U S E R T Y P E N A M E',
+            'user_type' => 'User Type',
         ];
     }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getUsers()
     {
-        return $this->hasMany(Users::className(), ['USER_TYPE' => 'USER_TYPE_ID']);
+        return $this->hasMany(\common\models\Users::className(), ['user_type' => 'user_type']);
     }
-}
+    }
