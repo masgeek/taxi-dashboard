@@ -58,7 +58,7 @@ use yii\helpers\Html;
             <li class="treeview">
                 <a href="#">
                     <i class="mdi mdi-content-copy"></i>
-                    <span>Layout Options</span>
+                    <span>Vehicle Setup</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -74,7 +74,7 @@ use yii\helpers\Html;
             <li class="treeview">
                 <a href="#">
                     <i class="mdi mdi-tune-vertical"></i>
-                    <span>Page Layouts </span>
+                    <span>Driver Setup</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>

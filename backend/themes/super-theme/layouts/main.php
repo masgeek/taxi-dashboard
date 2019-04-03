@@ -35,7 +35,7 @@ use yii\widgets\Breadcrumbs;
     <![endif]-->
 </head>
 <!--<body class="hold-transition skin-purple sidebar-mini">-->
-<body class="hold-transition skin-red fixed sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
 <?php $this->beginBody() ?>
 <div class="wrapper">
 
