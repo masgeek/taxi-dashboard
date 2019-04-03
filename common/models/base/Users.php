@@ -5,42 +5,25 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the base model class for table "{{%users}}".
+ * This is the model class for table "{{%users}}".
  *
- * @property integer $user_id
- * @property string $username
+ * @property int $id
+ * @property string $username Username
  * @property string $password
- * @property string $user_type
- * @property integer $account_active
+ * @property string $user_type User Type
+ * @property int $account_active Account Active
  * @property string $created_at
  * @property string $updated_at
  *
- * @property \common\models\AccessTokens[] $accessTokens
- * @property \common\models\AuthorizationCodes[] $authorizationCodes
- * @property \common\models\UserType $userType
+ * @property AccessTokens[] $accessTokens
+ * @property AuthorizationCodes[] $authorizationCodes
+ * @property Drivers[] $drivers
+ * @property UserType $userType
  */
 class Users extends \yii\db\ActiveRecord
 {
-    use \mootensai\relation\RelationTrait;
-
     /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['username', 'password', 'user_type'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['username', 'user_type'], 'string', 'max' => 20],
-            [['password'], 'string', 'max' => 300],
-            [['account_active'], 'string', 'max' => 1],
-            [['username'], 'unique'],
-            [['password'], 'unique']
-        ];
-    }
-    
-    /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -48,40 +31,67 @@ class Users extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['username', 'password', 'user_type'], 'required'],
+            [['account_active'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['username', 'user_type'], 'string', 'max' => 20],
+            [['password'], 'string', 'max' => 300],
+            [['username'], 'unique'],
+            [['password'], 'unique'],
+            [['user_type'], 'exist', 'skipOnError' => true, 'targetClass' => UserType::className(), 'targetAttribute' => ['user_type' => 'user_type']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
-            'user_id' => 'User ID',
+            'id' => 'ID',
             'username' => 'Username',
             'password' => 'Password',
-            'user_type' => 'User TYpe',
+            'user_type' => 'User Type',
             'account_active' => 'Account Active',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getAccessTokens()
     {
-        return $this->hasMany(\common\models\AccessTokens::className(), ['user_id' => 'user_id']);
+        return $this->hasMany(AccessTokens::className(), ['user_id' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getAuthorizationCodes()
     {
-        return $this->hasMany(\common\models\AuthorizationCodes::className(), ['user_id' => 'user_id']);
+        return $this->hasMany(AuthorizationCodes::className(), ['user_id' => 'id']);
     }
-        
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDrivers()
+    {
+        return $this->hasMany(Drivers::className(), ['driver_id' => 'id']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getUserType()
     {
-        return $this->hasOne(\common\models\UserType::className(), ['user_type' => 'user_type']);
+        return $this->hasOne(UserType::className(), ['user_type' => 'user_type']);
     }
-    }
+}

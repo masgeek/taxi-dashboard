@@ -25,7 +25,7 @@ class m190300_190936_create_tokens_table extends \console\models\BaseMigration
             'updated_at' => $this->timestamp()->defaultValue(null),
         ], $this->tableOptions);
 
-        $this->addForeignKey('fk-access-tokens', $this->tableName, 'user_id', '{{%users}}', 'user_id', 'CASCADE', 'CASCADE');
+        $this->addForeignKey('fk-access-tokens', $this->tableName, 'user_id', '{{%users}}', 'id', 'CASCADE', 'CASCADE');
     }
 
     /**

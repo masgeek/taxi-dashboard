@@ -5,29 +5,15 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the base model class for table "{{%migration}}".
+ * This is the model class for table "{{%migration}}".
  *
  * @property string $version
- * @property integer $apply_time
+ * @property int $apply_time
  */
 class Migration extends \yii\db\ActiveRecord
 {
-    use \mootensai\relation\RelationTrait;
-
     /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['version'], 'required'],
-            [['apply_time'], 'integer'],
-            [['version'], 'string', 'max' => 180]
-        ];
-    }
-    
-    /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -35,7 +21,20 @@ class Migration extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['version'], 'required'],
+            [['apply_time'], 'integer'],
+            [['version'], 'string', 'max' => 180],
+            [['version'], 'unique'],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
