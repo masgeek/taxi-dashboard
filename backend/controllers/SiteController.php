@@ -54,6 +54,12 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionDashboard()
+    {
+        $this->view->title = 'Dashboard';
+        return $this->render('dashboard');
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
