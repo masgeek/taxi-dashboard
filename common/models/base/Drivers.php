@@ -5,21 +5,46 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the model class for table "{{%drivers}}".
+ * This is the base model class for table "{{%drivers}}".
  *
- * @property int $id
- * @property int $driver_id
- * @property int $active
+ * @property integer $id
+ * @property string $username
+ * @property string $email
+ * @property string $mobile
+ * @property integer $active
+ * @property string $password
  * @property string $created_at
  * @property string $updated_at
+ * @property string $updated_by
+ * @property string $created_by
  *
- * @property AssignedVehicles[] $assignedVehicles
- * @property Users $driver
+ * @property \common\models\AssignedVehicles[] $assignedVehicles
  */
-class Drivers extends \yii\db\ActiveRecord
+class Drivers extends \common\extend\BaseModel
 {
+    use \mootensai\relation\RelationTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['username', 'email', 'mobile', 'password'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['username'], 'string', 'max' => 11],
+            [['email'], 'string', 'max' => 150],
+            [['mobile'], 'string', 'max' => 20],
+            [['active'], 'string', 'max' => 1],
+            [['password', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['mobile'], 'unique']
+        ];
+    }
+    
+    /**
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -27,45 +52,25 @@ class Drivers extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['driver_id'], 'required'],
-            [['driver_id', 'active'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['driver_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['driver_id' => 'id']],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'driver_id' => 'Driver ID',
+            'username' => 'Username',
+            'email' => 'Email',
+            'mobile' => 'Mobile',
             'active' => 'Active',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'password' => 'Password',
         ];
     }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getAssignedVehicles()
     {
-        return $this->hasMany(AssignedVehicles::className(), ['driver_id' => 'id']);
+        return $this->hasMany(\common\models\AssignedVehicles::className(), ['driver_id' => 'id']);
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDriver()
-    {
-        return $this->hasOne(Users::className(), ['id' => 'driver_id']);
     }
-}

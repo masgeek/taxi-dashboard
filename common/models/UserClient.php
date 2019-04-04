@@ -2,12 +2,12 @@
 
 namespace common\models;
 
-use \common\models\base\MakeYears as BaseMakeYears;
+use \common\models\base\UserClient as BaseUserClient;
 
 /**
- * This is the model class for table "tb_make_years".
+ * This is the model class for table "tb_user_client".
  */
-class MakeYears extends BaseMakeYears
+class UserClient extends BaseUserClient
 {
     /**
      * @inheritdoc
@@ -16,8 +16,8 @@ class MakeYears extends BaseMakeYears
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['year'], 'required'],
-            [['year', 'make_id'], 'integer'],
+            [['user_id', 'client_id'], 'required'],
+            [['user_id', 'client_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['updated_by', 'created_by'], 'string', 'max' => 255]
         ]);

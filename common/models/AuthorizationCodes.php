@@ -20,7 +20,8 @@ class AuthorizationCodes extends BaseAuthorizationCodes
             [['user_id', 'expires_at'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['code'], 'string', 'max' => 150],
-            [['app_id'], 'string', 'max' => 200]
+            [['app_id'], 'string', 'max' => 200],
+            [['updated_by', 'created_by'], 'string', 'max' => 255]
         ]);
     }
 	

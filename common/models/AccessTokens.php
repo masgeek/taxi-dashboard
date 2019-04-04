@@ -20,7 +20,8 @@ class AccessTokens extends BaseAccessTokens
             [['user_id', 'expires_at'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['token'], 'string', 'max' => 300],
-            [['auth_code', 'app_id'], 'string', 'max' => 200]
+            [['auth_code', 'app_id'], 'string', 'max' => 200],
+            [['updated_by', 'created_by'], 'string', 'max' => 255]
         ]);
     }
 	

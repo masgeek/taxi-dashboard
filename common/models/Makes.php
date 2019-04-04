@@ -17,7 +17,8 @@ class Makes extends BaseMakes
         return array_replace_recursive(parent::rules(),
 	    [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 255],
+            [['created_at', 'updated_at'], 'safe'],
+            [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
             [['name'], 'unique']
         ]);
     }

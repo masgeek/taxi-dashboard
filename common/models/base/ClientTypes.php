@@ -5,17 +5,17 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the base model class for table "{{%user_type}}".
+ * This is the base model class for table "{{%client_types}}".
  *
- * @property string $user_type
+ * @property string $client_type
  * @property string $created_at
  * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  *
- * @property \common\models\Users[] $users
+ * @property \common\models\Clients[] $clients
  */
-class UserType extends \common\extend\BaseModel
+class ClientTypes extends \common\extend\BaseModel
 {
     use \mootensai\relation\RelationTrait;
 
@@ -25,11 +25,11 @@ class UserType extends \common\extend\BaseModel
     public function rules()
     {
         return [
-            [['user_type'], 'required'],
+            [['client_type'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
-            [['user_type'], 'string', 'max' => 20],
+            [['client_type'], 'string', 'max' => 15],
             [['updated_by', 'created_by'], 'string', 'max' => 255],
-            [['user_type'], 'unique']
+            [['client_type'], 'unique']
         ];
     }
     
@@ -38,7 +38,7 @@ class UserType extends \common\extend\BaseModel
      */
     public static function tableName()
     {
-        return '{{%user_type}}';
+        return '{{%client_types}}';
     }
 
     /**
@@ -47,15 +47,15 @@ class UserType extends \common\extend\BaseModel
     public function attributeLabels()
     {
         return [
-            'user_type' => 'User Type',
+            'client_type' => 'Client Type',
         ];
     }
     
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsers()
+    public function getClients()
     {
-        return $this->hasMany(\common\models\Users::className(), ['user_type' => 'user_type']);
+        return $this->hasMany(\common\models\Clients::className(), ['client_type' => 'client_type']);
     }
     }

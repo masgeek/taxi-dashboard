@@ -5,24 +5,44 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the model class for table "{{%assigned_vehicles}}".
+ * This is the base model class for table "{{%assigned_vehicles}}".
  *
- * @property int $id
- * @property int $driver_id
- * @property int $vehicle_id
+ * @property integer $id
+ * @property integer $driver_id
+ * @property integer $vehicle_id
  * @property string $date_assigned
  * @property string $date_unassigned
- * @property int $active
+ * @property integer $active
  * @property string $created_at
  * @property string $updated_at
+ * @property string $updated_by
+ * @property string $created_by
  *
- * @property Drivers $driver
- * @property Vehicles $vehicle
+ * @property \common\models\Drivers $driver
+ * @property \common\models\Vehicles $vehicle
+ * @property \common\models\Trips[] $trips
  */
-class AssignedVehicles extends \yii\db\ActiveRecord
+class AssignedVehicles extends \common\extend\BaseModel
 {
+    use \mootensai\relation\RelationTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['driver_id', 'vehicle_id', 'date_assigned'], 'required'],
+            [['driver_id', 'vehicle_id'], 'integer'],
+            [['date_assigned', 'date_unassigned', 'created_at', 'updated_at'], 'safe'],
+            [['active'], 'string', 'max' => 1],
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned'], 'message' => 'The combination of Driver ID, Vehicle ID and Date Assigned has already been taken.']
+        ];
+    }
+    
+    /**
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -30,22 +50,7 @@ class AssignedVehicles extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['driver_id', 'vehicle_id', 'date_assigned'], 'required'],
-            [['driver_id', 'vehicle_id', 'active'], 'integer'],
-            [['date_assigned', 'date_unassigned', 'created_at', 'updated_at'], 'safe'],
-            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned']],
-            [['driver_id'], 'exist', 'skipOnError' => true, 'targetClass' => Drivers::className(), 'targetAttribute' => ['driver_id' => 'id']],
-            [['vehicle_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vehicles::className(), 'targetAttribute' => ['vehicle_id' => 'id']],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -56,24 +61,30 @@ class AssignedVehicles extends \yii\db\ActiveRecord
             'date_assigned' => 'Date Assigned',
             'date_unassigned' => 'Date Unassigned',
             'active' => 'Active',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
         ];
     }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getDriver()
     {
-        return $this->hasOne(Drivers::className(), ['id' => 'driver_id']);
+        return $this->hasOne(\common\models\Drivers::className(), ['id' => 'driver_id']);
     }
-
+        
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getVehicle()
     {
-        return $this->hasOne(Vehicles::className(), ['id' => 'vehicle_id']);
+        return $this->hasOne(\common\models\Vehicles::className(), ['id' => 'vehicle_id']);
     }
-}
+        
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTrips()
+    {
+        return $this->hasMany(\common\models\Trips::className(), ['assigned_vehicle_id' => 'id']);
+    }
+    }

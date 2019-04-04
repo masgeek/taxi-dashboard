@@ -5,27 +5,48 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the model class for table "{{%vehicles}}".
+ * This is the base model class for table "{{%vehicles}}".
  *
- * @property int $id
- * @property int $model_id
- * @property int $capacity Sitting capacity
- * @property int $color Vehicle color
- * @property double $mileage Mileage
- * @property double $total_distance Total distance covered
- * @property string $reg_no Registration
- * @property string $reg_year Registration year
- * @property int $active
+ * @property integer $id
+ * @property integer $model_id
+ * @property integer $capacity
+ * @property integer $color
+ * @property double $mileage
+ * @property double $total_distance
+ * @property string $reg_no
+ * @property string $reg_year
+ * @property integer $active
  * @property string $created_at
  * @property string $updated_at
+ * @property string $updated_by
+ * @property string $created_by
  *
- * @property AssignedVehicles[] $assignedVehicles
- * @property Models $model
+ * @property \common\models\AssignedVehicles[] $assignedVehicles
+ * @property \common\models\Models $model
  */
-class Vehicles extends \yii\db\ActiveRecord
+class Vehicles extends \common\extend\BaseModel
 {
+    use \mootensai\relation\RelationTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['model_id', 'capacity', 'color'], 'integer'],
+            [['mileage', 'total_distance'], 'number'],
+            [['reg_no', 'reg_year'], 'required'],
+            [['reg_year', 'created_at', 'updated_at'], 'safe'],
+            [['reg_no'], 'string', 'max' => 10],
+            [['active'], 'string', 'max' => 1],
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['reg_no'], 'unique']
+        ];
+    }
+    
+    /**
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -33,23 +54,7 @@ class Vehicles extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['model_id', 'capacity', 'color', 'active'], 'integer'],
-            [['mileage', 'total_distance'], 'number'],
-            [['reg_no', 'reg_year'], 'required'],
-            [['reg_year', 'created_at', 'updated_at'], 'safe'],
-            [['reg_no'], 'string', 'max' => 10],
-            [['reg_no'], 'unique'],
-            [['model_id'], 'exist', 'skipOnError' => true, 'targetClass' => Models::className(), 'targetAttribute' => ['model_id' => 'id']],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -63,24 +68,22 @@ class Vehicles extends \yii\db\ActiveRecord
             'reg_no' => 'Registration',
             'reg_year' => 'Registration year',
             'active' => 'Active',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
         ];
     }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getAssignedVehicles()
     {
-        return $this->hasMany(AssignedVehicles::className(), ['vehicle_id' => 'id']);
+        return $this->hasMany(\common\models\AssignedVehicles::className(), ['vehicle_id' => 'id']);
     }
-
+        
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getModel()
     {
-        return $this->hasOne(Models::className(), ['id' => 'model_id']);
+        return $this->hasOne(\common\models\Models::className(), ['id' => 'model_id']);
     }
-}
+    }

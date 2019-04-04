@@ -21,6 +21,7 @@ class Users extends BaseUsers
             [['username', 'user_type'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 300],
             [['account_active'], 'string', 'max' => 1],
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
             [['username'], 'unique'],
             [['password'], 'unique']
         ]);

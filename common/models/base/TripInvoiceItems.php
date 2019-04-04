@@ -5,20 +5,20 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the base model class for table "{{%make_years}}".
+ * This is the base model class for table "{{%trip_invoice_items}}".
  *
  * @property integer $id
- * @property integer $year
- * @property integer $make_id
+ * @property integer $invoice_id
+ * @property integer $trip_id
  * @property string $created_at
  * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  *
- * @property \common\models\Makes $make
- * @property \common\models\Models[] $models
+ * @property \common\models\Invoices $invoice
+ * @property \common\models\Trips $trip
  */
-class MakeYears extends \common\extend\BaseModel
+class TripInvoiceItems extends \common\extend\BaseModel
 {
     use \mootensai\relation\RelationTrait;
 
@@ -28,8 +28,8 @@ class MakeYears extends \common\extend\BaseModel
     public function rules()
     {
         return [
-            [['year'], 'required'],
-            [['year', 'make_id'], 'integer'],
+            [['invoice_id', 'trip_id'], 'required'],
+            [['invoice_id', 'trip_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['updated_by', 'created_by'], 'string', 'max' => 255]
         ];
@@ -40,7 +40,7 @@ class MakeYears extends \common\extend\BaseModel
      */
     public static function tableName()
     {
-        return '{{%make_years}}';
+        return '{{%trip_invoice_items}}';
     }
 
     /**
@@ -50,24 +50,24 @@ class MakeYears extends \common\extend\BaseModel
     {
         return [
             'id' => 'ID',
-            'year' => 'Year of manufacture',
-            'make_id' => 'Vehicle make',
+            'invoice_id' => 'Invoice ID',
+            'trip_id' => 'Trip ID',
         ];
     }
     
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMake()
+    public function getInvoice()
     {
-        return $this->hasOne(\common\models\Makes::className(), ['id' => 'make_id']);
+        return $this->hasOne(\common\models\Invoices::className(), ['id' => 'invoice_id']);
     }
         
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getModels()
+    public function getTrip()
     {
-        return $this->hasMany(\common\models\Models::className(), ['make_year_id' => 'id']);
+        return $this->hasOne(\common\models\Trips::className(), ['id' => 'trip_id']);
     }
     }

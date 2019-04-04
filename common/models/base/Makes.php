@@ -5,17 +5,36 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the model class for table "{{%makes}}".
+ * This is the base model class for table "{{%makes}}".
  *
- * @property int $id
- * @property string $name Vehicle Make
+ * @property integer $id
+ * @property string $name
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $updated_by
+ * @property string $created_by
  *
- * @property MakeYears[] $makeYears
+ * @property \common\models\MakeYears[] $makeYears
  */
-class Makes extends \yii\db\ActiveRecord
+class Makes extends \common\extend\BaseModel
 {
+    use \mootensai\relation\RelationTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['name'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['name'], 'unique']
+        ];
+    }
+    
+    /**
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -23,19 +42,7 @@ class Makes extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 255],
-            [['name'], 'unique'],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -44,12 +51,12 @@ class Makes extends \yii\db\ActiveRecord
             'name' => 'Vehicle Make',
         ];
     }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getMakeYears()
     {
-        return $this->hasMany(MakeYears::className(), ['make_id' => 'id']);
+        return $this->hasMany(\common\models\MakeYears::className(), ['make_id' => 'id']);
     }
-}
+    }

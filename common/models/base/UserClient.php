@@ -5,20 +5,20 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the base model class for table "{{%make_years}}".
+ * This is the base model class for table "{{%user_client}}".
  *
  * @property integer $id
- * @property integer $year
- * @property integer $make_id
+ * @property integer $user_id
+ * @property integer $client_id
  * @property string $created_at
  * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  *
- * @property \common\models\Makes $make
- * @property \common\models\Models[] $models
+ * @property \common\models\Users $user
+ * @property \common\models\Clients $client
  */
-class MakeYears extends \common\extend\BaseModel
+class UserClient extends \common\extend\BaseModel
 {
     use \mootensai\relation\RelationTrait;
 
@@ -28,8 +28,8 @@ class MakeYears extends \common\extend\BaseModel
     public function rules()
     {
         return [
-            [['year'], 'required'],
-            [['year', 'make_id'], 'integer'],
+            [['user_id', 'client_id'], 'required'],
+            [['user_id', 'client_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['updated_by', 'created_by'], 'string', 'max' => 255]
         ];
@@ -40,7 +40,7 @@ class MakeYears extends \common\extend\BaseModel
      */
     public static function tableName()
     {
-        return '{{%make_years}}';
+        return '{{%user_client}}';
     }
 
     /**
@@ -50,24 +50,24 @@ class MakeYears extends \common\extend\BaseModel
     {
         return [
             'id' => 'ID',
-            'year' => 'Year of manufacture',
-            'make_id' => 'Vehicle make',
+            'user_id' => 'User ID',
+            'client_id' => 'Client ID',
         ];
     }
     
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMake()
+    public function getUser()
     {
-        return $this->hasOne(\common\models\Makes::className(), ['id' => 'make_id']);
+        return $this->hasOne(\common\models\Users::className(), ['id' => 'user_id']);
     }
         
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getModels()
+    public function getClient()
     {
-        return $this->hasMany(\common\models\Models::className(), ['make_year_id' => 'id']);
+        return $this->hasOne(\common\models\Clients::className(), ['id' => 'client_id']);
     }
     }

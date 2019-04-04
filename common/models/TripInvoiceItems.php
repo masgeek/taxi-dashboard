@@ -2,12 +2,12 @@
 
 namespace common\models;
 
-use \common\models\base\MakeYears as BaseMakeYears;
+use \common\models\base\TripInvoiceItems as BaseTripInvoiceItems;
 
 /**
- * This is the model class for table "tb_make_years".
+ * This is the model class for table "tb_trip_invoice_items".
  */
-class MakeYears extends BaseMakeYears
+class TripInvoiceItems extends BaseTripInvoiceItems
 {
     /**
      * @inheritdoc
@@ -16,8 +16,8 @@ class MakeYears extends BaseMakeYears
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['year'], 'required'],
-            [['year', 'make_id'], 'integer'],
+            [['invoice_id', 'trip_id'], 'required'],
+            [['invoice_id', 'trip_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['updated_by', 'created_by'], 'string', 'max' => 255]
         ]);
