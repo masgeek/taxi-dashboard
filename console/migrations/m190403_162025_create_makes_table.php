@@ -16,7 +16,9 @@ class m190403_162025_create_makes_table extends \console\models\BaseMigration
     {
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
-            'name' => $this->string(255)->notNull()->unique()->comment("Vehicle Make")
+            'name' => $this->string(255)->notNull()->unique()->comment("Vehicle Make"),
+            'created_at' => $this->timestamp(),
+            'updated_at' => $this->timestamp()->defaultValue(null),
         ], $this->tableOptions);
     }
 

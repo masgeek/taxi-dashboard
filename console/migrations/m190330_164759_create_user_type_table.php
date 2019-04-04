@@ -21,8 +21,10 @@ class m190330_164759_create_user_type_table extends \console\models\BaseMigratio
         ], $this->tableOptions);
 
         $this->addPrimaryKey('user_type_pk', $this->tableName, 'user_type');
-
         $this->addForeignKey('user_type_fk', '{{%users}}', 'user_type', $this->tableName, 'user_type', 'restrict', 'cascade');
+
+        $this->insert($this->tableName, ['user_type' => 'DRIVER']);
+        $this->insert($this->tableName, ['user_type' => 'CLIENT']);
     }
 
     /**
