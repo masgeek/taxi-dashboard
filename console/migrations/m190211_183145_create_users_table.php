@@ -22,6 +22,8 @@ class m190211_183145_create_users_table extends \console\models\BaseMigration
             'account_active' => $this->boolean()->defaultValue(true)->comment('Account Active'),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
     }
 

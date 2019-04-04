@@ -18,6 +18,8 @@ class m190404_161154_create_client_types_table extends \console\models\BaseMigra
             'client_type' => $this->string(15)->notNull()->unique(),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
 
         $this->addPrimaryKey('client_type_pk', $this->tableName, 'client_type');

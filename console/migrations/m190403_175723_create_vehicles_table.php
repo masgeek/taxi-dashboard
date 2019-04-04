@@ -26,6 +26,8 @@ class m190403_175723_create_vehicles_table extends \console\models\BaseMigration
             'active' => $this->boolean()->defaultValue(true),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
 
         $this->addForeignKey('vehicle_models_fk', $this->tableName, 'model_id', '{{%models}}', 'id', 'RESTRICT', 'CASCADE');

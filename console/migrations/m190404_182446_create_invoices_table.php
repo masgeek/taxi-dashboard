@@ -24,6 +24,8 @@ class m190404_182446_create_invoices_table extends \console\models\BaseMigration
             'invoice_due_date' => $this->timestamp(null),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
     }
 

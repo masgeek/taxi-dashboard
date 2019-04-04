@@ -20,6 +20,8 @@ class m190404_181404_create_user_client_table extends \console\models\BaseMigrat
             'client_id' => $this->integer(11)->notNull(),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
 
         $this->addForeignKey('client_user_fk', $this->tableName, 'user_id', '{{%users}}', 'id', 'RESTRICT', 'CASCADE');

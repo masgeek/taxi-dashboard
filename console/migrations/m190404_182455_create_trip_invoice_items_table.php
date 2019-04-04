@@ -20,6 +20,8 @@ class m190404_182455_create_trip_invoice_items_table extends \console\models\Bas
             'trip_id' => $this->integer(11)->notNull(),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
 
         $this->addForeignKey('invoices_id_fk', $this->tableName, 'invoice_id', '{{%invoices}}', 'id', 'RESTRICT', 'CASCADE');

@@ -23,6 +23,8 @@ class m190403_181226_create_drivers_table extends \console\models\BaseMigration
             'password' => $this->string(255)->notNull(),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
     }
 

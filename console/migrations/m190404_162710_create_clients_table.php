@@ -27,6 +27,8 @@ class m190404_162710_create_clients_table extends \console\models\BaseMigration
             'currency' => $this->string(3)->notNull()->defaultValue('KES'),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
 
         $this->addForeignKey('client_type_fk', $this->tableName, 'client_type', '{{%client_types}}', 'client_type', 'RESTRICT', 'CASCADE');

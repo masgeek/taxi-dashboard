@@ -29,6 +29,8 @@ class m190404_172746_create_trips_table extends \console\models\BaseMigration
             'map_image' => 'LONGBLOB',
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ],$this->tableOptions);
 
         $this->addForeignKey('trip_client_fk', $this->tableName, 'assigned_vehicle_id', '{{%assigned_vehicles}}', 'id', 'RESTRICT', 'CASCADE');

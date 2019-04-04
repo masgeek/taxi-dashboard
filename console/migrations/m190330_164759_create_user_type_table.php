@@ -18,6 +18,8 @@ class m190330_164759_create_user_type_table extends \console\models\BaseMigratio
             'user_type' => $this->string(20)->comment('User Type')->unique(),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
 
         $this->addPrimaryKey('user_type_pk', $this->tableName, 'user_type');

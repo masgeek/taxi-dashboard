@@ -23,6 +23,8 @@ class m190403_182124_create_assigned_vehicles_table extends \console\models\Base
             'active' => $this->boolean()->defaultValue(true),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ]);
 
         $this->addForeignKey('driver_assigned_fk', $this->tableName, 'driver_id', '{{%drivers}}', 'id', 'RESTRICT', 'CASCADE');

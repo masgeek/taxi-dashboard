@@ -20,6 +20,8 @@ class m190403_162035_create_make_years_table extends \console\models\BaseMigrati
             'make_id' => $this->integer(11)->comment("Vehicle make"),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ], $this->tableOptions);
 
         //  CONSTRAINT `make_years_ibfk_1` FOREIGN KEY (`make_id`) REFERENCES `makes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE

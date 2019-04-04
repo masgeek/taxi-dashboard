@@ -20,6 +20,8 @@ class m190403_162059_create_models_table extends \console\models\BaseMigration
             'make_year_id' => $this->integer(11)->notNull(),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->defaultValue(null),
+            'updated_by' => $this->string(),
+            'created_by' => $this->string(),
         ]);
 
         //CONSTRAINT `models_ibfk_1` FOREIGN KEY (`makeyear_id`) REFERENCES `make_years` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
