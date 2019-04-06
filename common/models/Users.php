@@ -9,22 +9,13 @@ use common\models\base\Users as BaseUsers;
  */
 class Users extends BaseUsers
 {
-    /**
-     * @inheritdoc
-     */
-    public function rules()
+
+    public function behaviors()
     {
-        return array_replace_recursive(parent::rules(),
-	    [
-            [['username', 'password', 'user_type'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
-            [['username', 'user_type'], 'string', 'max' => 20],
-            [['password'], 'string', 'max' => 300],
-            [['account_active'], 'string', 'max' => 1],
-            [['updated_by', 'created_by'], 'string', 'max' => 255],
-            [['username'], 'unique'],
-            [['password'], 'unique']
-        ]);
+        $behaviors = parent::behaviors();
+
+        unset($behaviors['slug']);
+
+        return $behaviors;
     }
-	
 }

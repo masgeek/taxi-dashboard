@@ -15,7 +15,7 @@ use yii\web\NotFoundHttpException;
  * @inheritDoc
  */
 
-class MakesController extends BaseRestController
+class MakeController extends BaseRestController
 {
     public $modelClass = 'common\models\Makes';
 

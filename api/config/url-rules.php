@@ -10,18 +10,19 @@ $url_rules = [
     [
         'class' => 'yii\rest\UrlRule',
         'controller' => [
-            'v1/users',
+            'v1/user',
         ],
         'tokens' => [
             '{id}' => '<id:\\w+>',
         ],
         'extraPatterns' => [
+            'POST sign-up' => 'create',
         ]
     ],
     [
         'class' => 'yii\rest\UrlRule',
         'controller' => [
-            'v1/makes',
+            'v1/make',
         ],
         'tokens' => [
             '{id}' => '<id:\\w+>',

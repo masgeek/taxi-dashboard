@@ -132,7 +132,7 @@ class BaseRestController extends ActiveController
 
     public function isJsonRequest()
     {
-        if ($this->request && !is_array($this->request)) {
+        if (!$this->request && !is_array($this->request)) {
             return Yii::$app->api->sendFailedResponse(['Invalid Json']);
         }
         return true;

@@ -14,6 +14,7 @@ namespace common\models\base;
  * @property string $created_by
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $email
  *
  * @property \common\models\AccessTokens[] $accessTokens
  * @property \common\models\AuthorizationCodes[] $authorizationCodes
@@ -30,14 +31,16 @@ class Users extends \common\extend\BaseModel
     public function rules()
     {
         return [
-            [['username', 'password', 'user_type'], 'required'],
+            [['username', 'password', 'user_type', 'email'], 'required'],
             [['created_at', 'updated_at'], 'integer'],
             [['username', 'user_type'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 300],
             [['account_active'], 'string', 'max' => 1],
             [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['email'], 'string', 'max' => 100],
             [['username'], 'unique'],
-            [['password'], 'unique']
+            [['password'], 'unique'],
+            [['email'], 'unique']
         ];
     }
 
@@ -60,6 +63,7 @@ class Users extends \common\extend\BaseModel
             'password' => 'Password',
             'user_type' => 'User Type',
             'account_active' => 'Account Active',
+            'email' => 'Email',
         ];
     }
 

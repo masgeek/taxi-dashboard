@@ -27,18 +27,22 @@ class Api extends Component
     public function sendSuccessResponse($data = false, $additional_info = false)
     {
 
+
         $this->setHeader(200);
 
         $response = [];
         $response['status'] = 1;
 
-        if (is_array($data)) {
-            $response['data'] = $data;
+        if (!is_array($data)) {
+            $data = [$data];
         }
+        $response['data'] = $data;
+
 
         if ($additional_info) {
             $response = array_merge($response, $additional_info);
         }
+
 
         //$response = Json::encode($response, JSON_PRETTY_PRINT);
 
@@ -97,7 +101,7 @@ class Api extends Component
 
         $model->user_id = $user_id;
 
-        $model->app_id = 'PIZZAOUT';
+        $model->app_id = Yii::$app->name;
         $model->created_at = time();
         $model->updated_at = time();
 
@@ -126,7 +130,7 @@ class Api extends Component
 
         $model->user_id = $auth_code->user_id;
 
-        $model->app_id = 'PIZZAOUT';
+        $model->app_id = Yii::$app->name;
 
         $model->created_at = time();
 

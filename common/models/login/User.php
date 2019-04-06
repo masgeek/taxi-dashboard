@@ -3,30 +3,13 @@
 namespace common\models\login;
 
 
-use common\helper\APP_UTILS;
 use common\models\AccessTokens;
 use common\models\Users as BaseUser;
 use Yii;
+use yii\base\Exception;
 use yii\base\Security;
-use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 
-/**
- * User model
- *
- * @property integer $USER_ID
- * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $email
- * @property string $auth_key
- * @property integer $role
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $authKey
- * @property string $password write-only password
- */
 class User extends BaseUser implements IdentityInterface
 {
     const STATUS_DELETED = 0;
@@ -37,15 +20,7 @@ class User extends BaseUser implements IdentityInterface
     public $PASSWORD_RESET_TOKEN;
     public $CONFIRM_PASSWORD;
     public $FULL_NAMES;
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::class,
-        ];
-    }
+
 
     /**
      * @inheritdoc
@@ -79,7 +54,7 @@ class User extends BaseUser implements IdentityInterface
                 return Yii::$app->api->sendFailedResponse('Access token expired');
             }
 
-            return static::findOne(['USER_ID' => $access_token->user_id]);
+            return static::findOne(['id' => $access_token->user_id]);
         }
         return false;
     }
@@ -112,72 +87,18 @@ class User extends BaseUser implements IdentityInterface
         /* @var $userModel $this */
 
         $account_found = null;
-        //$userModel = UserProfile::findOne(['USER_NAME' => $username, 'EMAIL_ADDRESS'=>$username]);
+
         $userModel = self::find()
-            ->select(['USER_ID', 'EMAIL'])//select only specific fields
-            ->where(['EMAIL' => $username])
+            ->select(['id', 'username'])//select only specific fields
+            ->where(['username' => $username])
             ->one();
-        if ($userModel == null) {
-            $userModel = self::find()
-                ->select(['USER_ID', 'EMAIL'])//select only specific fields
-                ->where(['USER_NAME' => $username])
-                ->one();
-        }
+
         if ($userModel != null) {
-            $account_found = static::findOne(['USER_ID' => $userModel->USER_ID]);
+            $account_found = static::findOne(['id' => $userModel->id]);
         }
         return $account_found;
     }
 
-    public static function findByEmail($email)
-    {
-        /* @var $userModel $this */
-
-        $account_found = null;
-        //$userModel = UserProfile::findOne(['USER_NAME' => $username, 'EMAIL_ADDRESS'=>$username]);
-        $userModel = self::find()
-            ->select(['USER_ID', 'EMAIL'])//select only specific fields
-            ->where(['EMAIL' => $email])
-            ->one();
-
-        if ($userModel != null) {
-            $account_found = static::findOne(['USER_ID' => $userModel->USER_ID]);
-        }
-        return $account_found;
-    }
-
-    public static function findByToken($token)
-    {
-        /* @var $userModel $this */
-        $account_found = null;
-        $userModel = self::find()
-            ->select(['USER_ID', 'EMAIL'])//select only specific fields
-            ->where(['RESET_TOKEN' => $token])
-            ->one();
-
-        if ($userModel != null) {
-            $account_found = static::findOne(['USER_ID' => $userModel->USER_ID]);
-        }
-        return $account_found;
-    }
-
-    /**
-     * @param bool $insert
-     * @return bool
-     * @throws \yii\base\InvalidConfigException
-     */
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            $date = APP_UTILS::GetCurrentDateTime();
-            if ($this->isNewRecord) {
-                $this->DATE_REGISTERED = $date;
-            }
-            $this->LAST_UPDATED = $date;
-            return true;
-        }
-        return false;
-    }
 
     /**
      * Password validation during login
@@ -186,21 +107,21 @@ class User extends BaseUser implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->PASSWORD === sha1($password);
+        return $this->password === sha1($password);
     }
 
     /**
      * @param $password
-     * @throws \yii\base\Exception
+     * @throws Exception
      */
     public function setPassword($password)
     {
-        $this->PASSWORD = Security::generatePasswordHash($password);
+        $this->password = (new Security)->generatePasswordHash($password);
     }
 
     public function getPassword()
     {
-        return $this->PASSWORD;
+        return $this->password;
     }
 
     /**
@@ -222,21 +143,6 @@ class User extends BaseUser implements IdentityInterface
     //fields to return common stuff
     public function getUsername()
     {
-        return $this->USER_NAME;
-    }
-
-    public function getFullName()
-    {
-        return "John Doe";
-    }
-
-    public function getEmailAddress()
-    {
-        return $this->EMAIL;
-    }
-
-    public function getMobile()
-    {
-        return $this->MOBILE;
+        return $this->username;
     }
 }
