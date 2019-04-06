@@ -38,12 +38,13 @@ class BaseModel extends ActiveRecord
             ],
             'slug' => [
                 'class' => Slug::class,
+                //'attribute' => ['name', 'language.username'],
                 'attribute' => 'id',
                 'slugAttribute' => 'slug',
                 'ensureUnique' => true,
                 'replacement' => '-',
                 'lowercase' => true,
-                'immutable' => false,
+                'immutable' => false
             ],
         ];
     }

@@ -3,28 +3,45 @@
 namespace common\models\base;
 
 /**
- * This is the model class for table "{{%assigned_vehicles}}".
+ * This is the base model class for table "{{%assigned_vehicles}}".
  *
- * @property int $id
- * @property int $driver_id
- * @property int $vehicle_id
+ * @property integer $id
+ * @property integer $driver_id
+ * @property integer $vehicle_id
  * @property string $date_assigned
  * @property string $date_unassigned
- * @property int $active
+ * @property integer $active
  * @property string $created_at
  * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
  *
- * @property Drivers $driver
- * @property Vehicles $vehicle
- * @property Trips[] $trips
+ * @property \common\models\Drivers $driver
+ * @property \common\models\Vehicles $vehicle
+ * @property \common\models\Trips[] $trips
  */
 class AssignedVehicles extends \common\extend\BaseModel
 {
+    use \mootensai\relation\RelationTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['driver_id', 'vehicle_id', 'date_assigned'], 'required'],
+            [['driver_id', 'vehicle_id'], 'integer'],
+            [['date_assigned', 'date_unassigned', 'created_at', 'updated_at'], 'safe'],
+            [['active'], 'string', 'max' => 1],
+            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
+            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned'], 'message' => 'The combination of Driver ID, Vehicle ID and Date Assigned has already been taken.']
+        ];
+    }
+
+    /**
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -32,23 +49,7 @@ class AssignedVehicles extends \common\extend\BaseModel
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['driver_id', 'vehicle_id', 'date_assigned'], 'required'],
-            [['driver_id', 'vehicle_id', 'active'], 'integer'],
-            [['date_assigned', 'date_unassigned', 'created_at', 'updated_at'], 'safe'],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned']],
-            [['driver_id'], 'exist', 'skipOnError' => true, 'targetClass' => Drivers::className(), 'targetAttribute' => ['driver_id' => 'id']],
-            [['vehicle_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vehicles::className(), 'targetAttribute' => ['vehicle_id' => 'id']],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -59,10 +60,6 @@ class AssignedVehicles extends \common\extend\BaseModel
             'date_assigned' => 'Date Assigned',
             'date_unassigned' => 'Date Unassigned',
             'active' => 'Active',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'created_by' => 'Created By',
             'slug' => 'Slug',
         ];
     }
@@ -72,7 +69,7 @@ class AssignedVehicles extends \common\extend\BaseModel
      */
     public function getDriver()
     {
-        return $this->hasOne(Drivers::className(), ['id' => 'driver_id']);
+        return $this->hasOne(\common\models\Drivers::className(), ['id' => 'driver_id']);
     }
 
     /**
@@ -80,7 +77,7 @@ class AssignedVehicles extends \common\extend\BaseModel
      */
     public function getVehicle()
     {
-        return $this->hasOne(Vehicles::className(), ['id' => 'vehicle_id']);
+        return $this->hasOne(\common\models\Vehicles::className(), ['id' => 'vehicle_id']);
     }
 
     /**
@@ -88,6 +85,6 @@ class AssignedVehicles extends \common\extend\BaseModel
      */
     public function getTrips()
     {
-        return $this->hasMany(Trips::className(), ['assigned_vehicle_id' => 'id']);
+        return $this->hasMany(\common\models\Trips::className(), ['assigned_vehicle_id' => 'id']);
     }
 }

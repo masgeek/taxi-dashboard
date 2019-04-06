@@ -19,7 +19,7 @@ class ClientTypes extends BaseClientTypes
             [['client_type'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['client_type'], 'string', 'max' => 15],
-            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['client_type'], 'unique']
         ]);
     }

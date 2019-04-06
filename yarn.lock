@@ -19,6 +19,11 @@ simple-line-icons@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/simple-line-icons/-/simple-line-icons-2.4.1.tgz#b75bc5a0d87e530928c2ccda5735274bb256f234"
 
+swagger-ui-dist@^3.22.0:
+  version "3.22.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.22.0.tgz#9f2417d774f21fac260b1497ead0650dc3e92861"
+  integrity sha512-ZFcQoi4XT2t/NGKByVwmb4iERLtGmQQEFqHNC1PmdauWVZ2y80akkzctghgAftTlc8xpUp+I62nm4Km2q82ajQ==
+
 themify-icons@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/themify-icons/-/themify-icons-1.0.0.tgz#216f330ed1b9c3fdc8e675655e189a0b7ecb1c5c"

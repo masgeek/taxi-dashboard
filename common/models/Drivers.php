@@ -22,7 +22,7 @@ class Drivers extends BaseDrivers
             [['email'], 'string', 'max' => 150],
             [['mobile'], 'string', 'max' => 20],
             [['active'], 'string', 'max' => 1],
-            [['password', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['password', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['mobile'], 'unique']

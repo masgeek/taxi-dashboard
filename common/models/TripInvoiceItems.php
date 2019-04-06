@@ -19,7 +19,7 @@ class TripInvoiceItems extends BaseTripInvoiceItems
             [['invoice_id', 'trip_id'], 'required'],
             [['invoice_id', 'trip_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['updated_by', 'created_by'], 'string', 'max' => 255]
+            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255]
         ]);
     }
 	

@@ -19,7 +19,7 @@ class Clients extends BaseClients
             [['name', 'client_type', 'email', 'mobile', 'base_charge'], 'required'],
             [['base_charge', 'min_charge', 'waiting_charge'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['name', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['client_type'], 'string', 'max' => 15],
             [['email'], 'string', 'max' => 150],
             [['mobile'], 'string', 'max' => 20],

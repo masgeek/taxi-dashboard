@@ -3,16 +3,16 @@
 namespace common\models\base;
 
 /**
- * This is the model class for table "{{%clients}}".
+ * This is the base model class for table "{{%clients}}".
  *
- * @property int $id
- * @property string $name Client name
- * @property string $client_type Client type
+ * @property integer $id
+ * @property string $name
+ * @property string $client_type
  * @property string $email
- * @property string $mobile Mobile number
- * @property string $landline Landline
- * @property double $base_charge Charge per KM
- * @property double $min_charge Minimum charge
+ * @property string $mobile
+ * @property string $landline
+ * @property double $base_charge
+ * @property double $min_charge
  * @property double $waiting_charge
  * @property string $currency
  * @property string $created_at
@@ -21,22 +21,16 @@ namespace common\models\base;
  * @property string $created_by
  * @property string $slug
  *
- * @property ClientTypes $clientType
- * @property Trips[] $trips
- * @property UserClient[] $userClients
+ * @property \common\models\ClientTypes $clientType
+ * @property \common\models\Trips[] $trips
+ * @property \common\models\UserClient[] $userClients
  */
 class Clients extends \common\extend\BaseModel
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return '{{%clients}}';
-    }
+    use \mootensai\relation\RelationTrait;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -53,13 +47,20 @@ class Clients extends \common\extend\BaseModel
             [['name'], 'unique'],
             [['email'], 'unique'],
             [['mobile'], 'unique'],
-            [['landline'], 'unique'],
-            [['client_type'], 'exist', 'skipOnError' => true, 'targetClass' => ClientTypes::className(), 'targetAttribute' => ['client_type' => 'client_type']],
+            [['landline'], 'unique']
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%clients}}';
+    }
+
+    /**
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -74,10 +75,6 @@ class Clients extends \common\extend\BaseModel
             'min_charge' => 'Minimum charge',
             'waiting_charge' => 'Waiting Charge',
             'currency' => 'Currency',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'created_by' => 'Created By',
             'slug' => 'Slug',
         ];
     }
@@ -87,7 +84,7 @@ class Clients extends \common\extend\BaseModel
      */
     public function getClientType()
     {
-        return $this->hasOne(ClientTypes::className(), ['client_type' => 'client_type']);
+        return $this->hasOne(\common\models\ClientTypes::className(), ['client_type' => 'client_type']);
     }
 
     /**
@@ -95,7 +92,7 @@ class Clients extends \common\extend\BaseModel
      */
     public function getTrips()
     {
-        return $this->hasMany(Trips::className(), ['client_id' => 'id']);
+        return $this->hasMany(\common\models\Trips::className(), ['client_id' => 'id']);
     }
 
     /**
@@ -103,6 +100,6 @@ class Clients extends \common\extend\BaseModel
      */
     public function getUserClients()
     {
-        return $this->hasMany(UserClient::className(), ['client_id' => 'id']);
+        return $this->hasMany(\common\models\UserClient::className(), ['client_id' => 'id']);
     }
 }

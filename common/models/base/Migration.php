@@ -3,15 +3,29 @@
 namespace common\models\base;
 
 /**
- * This is the model class for table "{{%migration}}".
+ * This is the base model class for table "{{%migration}}".
  *
  * @property string $version
- * @property int $apply_time
+ * @property integer $apply_time
  */
 class Migration extends \common\extend\BaseModel
 {
+    use \mootensai\relation\RelationTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['version'], 'required'],
+            [['apply_time'], 'integer'],
+            [['version'], 'string', 'max' => 180]
+        ];
+    }
+
+    /**
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -19,20 +33,7 @@ class Migration extends \common\extend\BaseModel
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['version'], 'required'],
-            [['apply_time'], 'integer'],
-            [['version'], 'string', 'max' => 180],
-            [['version'], 'unique'],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {

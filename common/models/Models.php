@@ -19,7 +19,7 @@ class Models extends BaseModels
             [['name', 'make_year_id'], 'required'],
             [['make_year_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['name', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['name', 'make_year_id'], 'unique', 'targetAttribute' => ['name', 'make_year_id'], 'message' => 'The combination of Vehicle name and Make Year ID has already been taken.']
         ]);
     }

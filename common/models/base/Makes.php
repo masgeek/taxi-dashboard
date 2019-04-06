@@ -3,30 +3,24 @@
 namespace common\models\base;
 
 /**
- * This is the model class for table "{{%makes}}".
+ * This is the base model class for table "{{%makes}}".
  *
- * @property int $id
- * @property string $name Vehicle Make
+ * @property integer $id
+ * @property string $name
  * @property string $created_at
  * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
  *
- * @property MakeYears[] $makeYears
+ * @property \common\models\MakeYears[] $makeYears
  */
 class Makes extends \common\extend\BaseModel
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return '{{%makes}}';
-    }
+    use \mootensai\relation\RelationTrait;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -34,22 +28,26 @@ class Makes extends \common\extend\BaseModel
             [['name'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['name'], 'unique'],
+            [['name'], 'unique']
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%makes}}';
+    }
+
+    /**
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
             'name' => 'Vehicle Make',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'created_by' => 'Created By',
             'slug' => 'Slug',
         ];
     }
@@ -59,6 +57,6 @@ class Makes extends \common\extend\BaseModel
      */
     public function getMakeYears()
     {
-        return $this->hasMany(MakeYears::className(), ['make_id' => 'id']);
+        return $this->hasMany(\common\models\MakeYears::className(), ['make_id' => 'id']);
     }
 }

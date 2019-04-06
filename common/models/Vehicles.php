@@ -22,7 +22,7 @@ class Vehicles extends BaseVehicles
             [['reg_year', 'created_at', 'updated_at'], 'safe'],
             [['reg_no'], 'string', 'max' => 10],
             [['active'], 'string', 'max' => 1],
-            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['reg_no'], 'unique']
         ]);
     }

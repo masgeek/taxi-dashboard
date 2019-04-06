@@ -21,7 +21,7 @@ class Trips extends BaseTrips
             [['origin', 'destination', 'map_image'], 'string'],
             [['start_date', 'end_date', 'created_at', 'updated_at'], 'safe'],
             [['distance_covered', 'total_cost'], 'number'],
-            [['status', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['status', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['invoice_generated'], 'string', 'max' => 1]
         ]);
     }

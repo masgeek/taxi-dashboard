@@ -3,9 +3,9 @@
 namespace common\models\base;
 
 /**
- * This is the model class for table "{{%invoices}}".
+ * This is the base model class for table "{{%invoices}}".
  *
- * @property int $id
+ * @property integer $id
  * @property string $invoice_id
  * @property double $vat_percentage
  * @property double $invoice_sub_total
@@ -18,20 +18,14 @@ namespace common\models\base;
  * @property string $created_by
  * @property string $slug
  *
- * @property TripInvoiceItems[] $tripInvoiceItems
+ * @property \common\models\TripInvoiceItems[] $tripInvoiceItems
  */
 class Invoices extends \common\extend\BaseModel
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return '{{%invoices}}';
-    }
+    use \mootensai\relation\RelationTrait;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -41,12 +35,20 @@ class Invoices extends \common\extend\BaseModel
             [['invoice_due_date', 'created_at', 'updated_at'], 'safe'],
             [['invoice_id', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['invoice_status'], 'string', 'max' => 15],
-            [['invoice_id'], 'unique'],
+            [['invoice_id'], 'unique']
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%invoices}}';
+    }
+
+    /**
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -58,10 +60,6 @@ class Invoices extends \common\extend\BaseModel
             'invoice_total' => 'Invoice Total',
             'invoice_status' => 'Invoice Status',
             'invoice_due_date' => 'Invoice Due Date',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'created_by' => 'Created By',
             'slug' => 'Slug',
         ];
     }
@@ -71,6 +69,6 @@ class Invoices extends \common\extend\BaseModel
      */
     public function getTripInvoiceItems()
     {
-        return $this->hasMany(TripInvoiceItems::className(), ['invoice_id' => 'id']);
+        return $this->hasMany(\common\models\TripInvoiceItems::className(), ['invoice_id' => 'id']);
     }
 }

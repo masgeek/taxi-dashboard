@@ -19,7 +19,7 @@ class UserType extends BaseUserType
             [['user_type'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['user_type'], 'string', 'max' => 20],
-            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['user_type'], 'unique']
         ]);
     }

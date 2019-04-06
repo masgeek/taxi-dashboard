@@ -3,13 +3,13 @@
 namespace common\models\base;
 
 /**
- * This is the model class for table "{{%drivers}}".
+ * This is the base model class for table "{{%drivers}}".
  *
- * @property int $id
+ * @property integer $id
  * @property string $username
  * @property string $email
  * @property string $mobile
- * @property int $active
+ * @property integer $active
  * @property string $password
  * @property string $created_at
  * @property string $updated_at
@@ -17,12 +17,33 @@ namespace common\models\base;
  * @property string $created_by
  * @property string $slug
  *
- * @property AssignedVehicles[] $assignedVehicles
+ * @property \common\models\AssignedVehicles[] $assignedVehicles
  */
 class Drivers extends \common\extend\BaseModel
 {
+    use \mootensai\relation\RelationTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['username', 'email', 'mobile', 'password'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['username'], 'string', 'max' => 11],
+            [['email'], 'string', 'max' => 150],
+            [['mobile'], 'string', 'max' => 20],
+            [['active'], 'string', 'max' => 1],
+            [['password', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['mobile'], 'unique']
+        ];
+    }
+
+    /**
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -30,26 +51,7 @@ class Drivers extends \common\extend\BaseModel
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['username', 'email', 'mobile', 'password'], 'required'],
-            [['active'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['username'], 'string', 'max' => 11],
-            [['email'], 'string', 'max' => 150],
-            [['mobile'], 'string', 'max' => 20],
-            [['password', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['username'], 'unique'],
-            [['email'], 'unique'],
-            [['mobile'], 'unique'],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -60,10 +62,6 @@ class Drivers extends \common\extend\BaseModel
             'mobile' => 'Mobile',
             'active' => 'Active',
             'password' => 'Password',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'created_by' => 'Created By',
             'slug' => 'Slug',
         ];
     }
@@ -73,6 +71,6 @@ class Drivers extends \common\extend\BaseModel
      */
     public function getAssignedVehicles()
     {
-        return $this->hasMany(AssignedVehicles::className(), ['driver_id' => 'id']);
+        return $this->hasMany(\common\models\AssignedVehicles::className(), ['driver_id' => 'id']);
     }
 }

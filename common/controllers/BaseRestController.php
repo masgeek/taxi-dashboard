@@ -11,8 +11,11 @@ namespace common\controllers;
 use api\behaviours\Apiauth;
 use api\behaviours\Requestcheck;
 use Yii;
+use yii\filters\Cors;
+use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\rest\ActiveController;
+use yii\web\Response;
 
 /**
  * Base Controller API
@@ -20,6 +23,30 @@ use yii\rest\ActiveController;
  * This controller implements the basic authentication and will be extended by all rest controllers for ease of use
  *
  * @author Sammy Barasa <barsamms@gmail.com>
+ * @SWG\Swagger(
+ *     schemes={"http","https"},
+ *     host="127.0.0.1:8002",
+ *     basePath="/api/v1",
+ *      produces={"application/json"},
+ *     consumes={"application/x-www-form-urlencoded","application/json"},
+ *     @SWG\Info(
+ *         version="1.0.0",
+ *         title="Taxi service API",
+ *         description="Api endpoints for taxi service",
+ *         termsOfService="",
+ *         @SWG\Contact(
+ *             email="sammy@tsobu.co.ke"
+ *         ),
+ *         @SWG\License(
+ *             name="Private License",
+ *             url="URL to the license"
+ *         )
+ *     ),
+ *     @SWG\ExternalDocumentation(
+ *         description="Find out more about my website",
+ *         url="https/swagger.io"
+ *     )
+ * )
  */
 class BaseRestController extends ActiveController
 {
@@ -48,7 +75,7 @@ class BaseRestController extends ActiveController
         $behaviors = parent::behaviors();
 
         $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::class,
+            'class' => Cors::class,
             'cors' => [
                 'Origin' => ['*'],
                 // 'Access-Control-Allow-Origin' => ['*', 'http://haikuwebapp.local.com:81','http://localhost:81'],
@@ -62,7 +89,7 @@ class BaseRestController extends ActiveController
         ];
 
         $behaviors['verbs'] = [
-            'class' => \yii\filters\VerbFilter::class,
+            'class' => VerbFilter::class,
             'actions' => [
                 //'index' => ['POST'],
                 'index' => ['GET', 'POST'],
@@ -75,22 +102,23 @@ class BaseRestController extends ActiveController
 
         $behaviors['apiauth'] = [
             'class' => Apiauth::class,
-            'exclude' => ['index', 'view'],
+            'exclude' => ['index', 'create', 'update', 'view'],
             'callback' => []
         ];
 
-        //$behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
 
         $behaviors['requestcheck'] = [
             'class' => Requestcheck::class,
             'requestbody' => $this->request
         ];
+
         /*$behaviors['authenticator'] = [
-             'class' => CompositeAuth::className(),
+             'class' => CompositeAuth::class,
              'authMethods' => [
-                 //HttpBasicAuth::className(),
-                 //HttpBearerAuth::className(),
-                 //QueryParamAuth::className(),
+                 HttpBasicAuth::class,
+                 HttpBearerAuth::class,
+                 QueryParamAuth::class,
              ],
          ];*/
 

@@ -3,7 +3,7 @@
 namespace common\models\base;
 
 /**
- * This is the model class for table "{{%client_types}}".
+ * This is the base model class for table "{{%client_types}}".
  *
  * @property string $client_type
  * @property string $created_at
@@ -12,20 +12,14 @@ namespace common\models\base;
  * @property string $created_by
  * @property string $slug
  *
- * @property Clients[] $clients
+ * @property \common\models\Clients[] $clients
  */
 class ClientTypes extends \common\extend\BaseModel
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return '{{%client_types}}';
-    }
+    use \mootensai\relation\RelationTrait;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -34,21 +28,25 @@ class ClientTypes extends \common\extend\BaseModel
             [['created_at', 'updated_at'], 'safe'],
             [['client_type'], 'string', 'max' => 15],
             [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['client_type'], 'unique'],
+            [['client_type'], 'unique']
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%client_types}}';
+    }
+
+    /**
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
             'client_type' => 'Client Type',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'created_by' => 'Created By',
             'slug' => 'Slug',
         ];
     }
@@ -58,6 +56,6 @@ class ClientTypes extends \common\extend\BaseModel
      */
     public function getClients()
     {
-        return $this->hasMany(Clients::className(), ['client_type' => 'client_type']);
+        return $this->hasMany(\common\models\Clients::className(), ['client_type' => 'client_type']);
     }
 }
