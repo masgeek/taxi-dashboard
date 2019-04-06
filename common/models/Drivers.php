@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Drivers as BaseDrivers;
+use common\models\base\Drivers as BaseDrivers;
 
 /**
  * This is the model class for table "tb_drivers".

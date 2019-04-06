@@ -12,9 +12,6 @@ namespace app\api\modules\v1\models;
 use app\helpers\APP_UTILS;
 use app\model_extended\MENU_ITEM_TYPE;
 use app\models\MenuItem;
-use yii\helpers\Url;
-use yii\web\Link;
-use yii\web\Linkable;
 
 class MENU_ITEM_MODEL extends MenuItem //implements Linkable
 {

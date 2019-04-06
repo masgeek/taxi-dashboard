@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Country as BaseCountry;
+use common\models\base\Country as BaseCountry;
 
 /**
  * This is the model class for table "country".

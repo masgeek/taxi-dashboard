@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use \common\models\base\VwSalesReports as BaseVwSalesReports;
 use common\helper\OrderHelper as ORDER_HELPER;
+use common\models\base\VwSalesReports as BaseVwSalesReports;
 
 /**
  * This is the model class for table "vw_sales_reports".

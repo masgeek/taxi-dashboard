@@ -10,7 +10,6 @@ namespace common\helper;
 
 use app\api\modules\v1\models\PAYMENT_MODEL;
 use app\api\modules\v1\models\USER_MODEL;
-use Yii;
 use Braintree_Configuration;
 use Pafelin\LaravelNonce\Nonce;
 

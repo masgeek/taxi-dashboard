@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\DbCache as BaseDbCache;
+use common\models\base\DbCache as BaseDbCache;
 
 /**
  * This is the model class for table "db_cache".

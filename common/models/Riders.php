@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\Riders as BaseRiders;
 use Yii;
-use \common\models\base\Riders as BaseRiders;
 
 /**
  * This is the model class for table "riders".

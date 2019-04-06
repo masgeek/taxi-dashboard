@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Favs as BaseFavs;
+use common\models\base\Favs as BaseFavs;
 
 /**
  * This is the model class for table "tb_favs".

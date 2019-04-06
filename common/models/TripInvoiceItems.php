@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\TripInvoiceItems as BaseTripInvoiceItems;
+use common\models\base\TripInvoiceItems as BaseTripInvoiceItems;
 
 /**
  * This is the model class for table "tb_trip_invoice_items".

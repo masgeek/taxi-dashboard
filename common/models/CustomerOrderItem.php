@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\CustomerOrderItem as BaseCustomerOrderItem;
+use common\models\base\CustomerOrderItem as BaseCustomerOrderItem;
 
 /**
  * This is the model class for table "customer_order_item".

@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\DeliveryTime as BaseDeliveryTime;
+use common\models\base\DeliveryTime as BaseDeliveryTime;
 
 /**
  * This is the model class for table "tb_delivery_time".

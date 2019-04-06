@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Invoices as BaseInvoices;
+use common\models\base\Invoices as BaseInvoices;
 
 /**
  * This is the model class for table "tb_invoices".

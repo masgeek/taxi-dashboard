@@ -3,8 +3,8 @@
 namespace common\tests\_helpers;
 
 use Codeception\Module;
-use yii\test\FixtureTrait;
 use common\tests\fixtures\UserFixture;
+use yii\test\FixtureTrait;
 
 /**
  * This helper is used to populate database with needed fixtures before any tests should be run.

@@ -4,13 +4,12 @@ namespace common\models\login;
 
 
 use common\helper\APP_UTILS;
-use common\models\UserType;
+use common\models\AccessTokens;
+use common\models\Users as BaseUser;
 use Yii;
 use yii\base\Security;
 use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
-use common\models\AccessTokens;
-use common\models\Users as BaseUser;
 
 /**
  * User model

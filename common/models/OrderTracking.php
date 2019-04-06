@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\OrderTracking as BaseOrderTracking;
+use common\models\base\OrderTracking as BaseOrderTracking;
 
 /**
  * This is the model class for table "order_tracking".

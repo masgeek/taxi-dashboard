@@ -11,8 +11,8 @@ namespace api\models;
 
 use common\helper\APP_UTILS;
 use common\helper\OrderHelper as ORDER_HELPER;
-use common\models\CustomerOrderItem as CUSTOMER_ORDER_ITEM;
 use common\models\CustomerOrder;
+use common\models\CustomerOrderItem as CUSTOMER_ORDER_ITEM;
 use common\models\Payment;
 
 /**

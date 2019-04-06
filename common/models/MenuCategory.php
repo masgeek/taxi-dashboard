@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\MenuCategory as BaseMenuCategory;
 use Yii;
-use \common\models\base\MenuCategory as BaseMenuCategory;
 use yii\helpers\ArrayHelper;
 
 /**

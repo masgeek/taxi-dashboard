@@ -8,6 +8,8 @@
 
 namespace console\models;
 
+use Yii;
+
 class BaseMigration extends \yii\db\Migration
 {
     public $tableOptions;
@@ -15,6 +17,8 @@ class BaseMigration extends \yii\db\Migration
     public $tableName;
 
     public $filePath;
+
+    public $excludedTables = ['migration', 'users', 'authorization_codes', 'access_tokens'];
 
     public function __construct(array $config = [])
     {
@@ -34,5 +38,23 @@ class BaseMigration extends \yii\db\Migration
     public function safeDown()
     {
         $this->dropTable($this->tableName);
+    }
+
+    /**
+     * @return array|string[]
+     */
+    public function getTables()
+    {
+        $cleanedTables = [];
+        $connection = Yii::$app->db;
+        $dbSchema = $connection->schema;
+        $tables = $dbSchema->getTableNames();//returns array of tbl schema's
+        foreach ($tables as $tableName) {
+            $noPrefix = str_replace($connection->tablePrefix, '', $tableName);
+            if (!in_array($noPrefix, $this->excludedTables)) { //dont add the migration tracking table
+                $cleanedTables[] = "{{%{$noPrefix}}}";
+            }
+        }
+        return $cleanedTables;
     }
 }

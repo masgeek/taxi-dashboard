@@ -11,7 +11,6 @@ namespace api\behaviours;
 
 use yii\base\Behavior;
 use yii\base\Controller;
-use yii\web\HttpException;
 use yii\web\NotAcceptableHttpException;
 
 class Requestcheck extends Behavior

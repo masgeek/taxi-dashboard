@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Chef as BaseChef;
+use common\models\base\Chef as BaseChef;
 use yii\helpers\ArrayHelper;
 
 /**

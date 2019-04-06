@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\WpCart as BaseWpCart;
+use common\models\base\WpCart as BaseWpCart;
 
 /**
  * This is the model class for table "wp_cart".

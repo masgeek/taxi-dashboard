@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\MenuItem as BaseMenuItem;
 use Yii;
-use \common\models\base\MenuItem as BaseMenuItem;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 

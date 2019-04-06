@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\ClientTypes as BaseClientTypes;
+use common\models\base\ClientTypes as BaseClientTypes;
 
 /**
  * This is the model class for table "tb_client_types".

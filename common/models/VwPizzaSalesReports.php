@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\VwPizzaSalesReports as BaseVwPizzaSalesReports;
+use common\models\base\VwPizzaSalesReports as BaseVwPizzaSalesReports;
 
 /**
  * This is the model class for table "vw_pizza_sales_reports".

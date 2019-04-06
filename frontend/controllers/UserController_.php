@@ -2,12 +2,12 @@
 
 namespace frontend\controllers;
 
-use Yii;
-use common\models\User;
-use common\models\search\UserSearch;
 use common\controllers\BaseWebController;
-use yii\web\NotFoundHttpException;
+use common\models\search\UserSearch;
+use common\models\User;
+use Yii;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * UserController implements the CRUD actions for User model.

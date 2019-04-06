@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use \common\models\base\ApiToken as BaseApiToken;
 use common\helper\APP_UTILS;
+use common\models\base\ApiToken as BaseApiToken;
 
 /**
  * This is the model class for table "api_token".

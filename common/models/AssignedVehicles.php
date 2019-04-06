@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\AssignedVehicles as BaseAssignedVehicles;
+use common\models\base\AssignedVehicles as BaseAssignedVehicles;
 
 /**
  * This is the model class for table "tb_assigned_vehicles".

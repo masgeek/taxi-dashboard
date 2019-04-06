@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\Status as BaseStatus;
 use Yii;
-use \common\models\base\Status as BaseStatus;
 use yii\helpers\ArrayHelper;
 
 /**

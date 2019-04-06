@@ -1,7 +1,5 @@
 <?php
 
-use yii\db\Migration;
-
 /**
  * Class m190403_172230_insert_vehicle_models
  */

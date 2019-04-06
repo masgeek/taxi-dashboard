@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\AccessTokens as BaseAccessTokens;
+use common\models\base\AccessTokens as BaseAccessTokens;
 
 /**
  * This is the model class for table "tb_access_tokens".

@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Kitchen as BaseKitchen;
+use common\models\base\Kitchen as BaseKitchen;
 use yii\helpers\ArrayHelper;
 
 /**

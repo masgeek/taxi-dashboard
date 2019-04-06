@@ -2,36 +2,41 @@
 
 namespace common\models\base;
 
-use Yii;
-
 /**
- * This is the base model class for table "{{%clients}}".
+ * This is the model class for table "{{%clients}}".
  *
- * @property integer $id
- * @property string $name
- * @property string $client_type
+ * @property int $id
+ * @property string $name Client name
+ * @property string $client_type Client type
  * @property string $email
- * @property string $mobile
- * @property string $landline
- * @property double $base_charge
- * @property double $min_charge
+ * @property string $mobile Mobile number
+ * @property string $landline Landline
+ * @property double $base_charge Charge per KM
+ * @property double $min_charge Minimum charge
  * @property double $waiting_charge
  * @property string $currency
  * @property string $created_at
  * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
+ * @property string $slug
  *
- * @property \common\models\ClientTypes $clientType
- * @property \common\models\Trips[] $trips
- * @property \common\models\UserClient[] $userClients
+ * @property ClientTypes $clientType
+ * @property Trips[] $trips
+ * @property UserClient[] $userClients
  */
 class Clients extends \common\extend\BaseModel
 {
-    use \mootensai\relation\RelationTrait;
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return '{{%clients}}';
+    }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -39,7 +44,7 @@ class Clients extends \common\extend\BaseModel
             [['name', 'client_type', 'email', 'mobile', 'base_charge'], 'required'],
             [['base_charge', 'min_charge', 'waiting_charge'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['name', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
             [['client_type'], 'string', 'max' => 15],
             [['email'], 'string', 'max' => 150],
             [['mobile'], 'string', 'max' => 20],
@@ -48,20 +53,13 @@ class Clients extends \common\extend\BaseModel
             [['name'], 'unique'],
             [['email'], 'unique'],
             [['mobile'], 'unique'],
-            [['landline'], 'unique']
+            [['landline'], 'unique'],
+            [['client_type'], 'exist', 'skipOnError' => true, 'targetClass' => ClientTypes::className(), 'targetAttribute' => ['client_type' => 'client_type']],
         ];
-    }
-    
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%clients}}';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -76,30 +74,35 @@ class Clients extends \common\extend\BaseModel
             'min_charge' => 'Minimum charge',
             'waiting_charge' => 'Waiting Charge',
             'currency' => 'Currency',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'created_by' => 'Created By',
+            'slug' => 'Slug',
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getClientType()
     {
-        return $this->hasOne(\common\models\ClientTypes::className(), ['client_type' => 'client_type']);
+        return $this->hasOne(ClientTypes::className(), ['client_type' => 'client_type']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getTrips()
     {
-        return $this->hasMany(\common\models\Trips::className(), ['client_id' => 'id']);
+        return $this->hasMany(Trips::className(), ['client_id' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getUserClients()
     {
-        return $this->hasMany(\common\models\UserClient::className(), ['client_id' => 'id']);
+        return $this->hasMany(UserClient::className(), ['client_id' => 'id']);
     }
-    }
+}

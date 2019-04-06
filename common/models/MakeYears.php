@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\MakeYears as BaseMakeYears;
+use common\models\base\MakeYears as BaseMakeYears;
 
 /**
  * This is the model class for table "tb_make_years".

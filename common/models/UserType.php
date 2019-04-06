@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\UserType as BaseUserType;
+use common\models\base\UserType as BaseUserType;
 
 /**
  * This is the model class for table "tb_user_type".

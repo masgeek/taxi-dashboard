@@ -10,10 +10,11 @@
 
 namespace common\extend;
 
-use yii\db\ActiveRecord;
-use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\db\Expression;
+use Zelenin\yii\behaviors\Slug;
 
 class BaseModel extends ActiveRecord
 {
@@ -21,8 +22,7 @@ class BaseModel extends ActiveRecord
      * @inheritdoc
      * @return array mixed
      */
-    public
-    function behaviors()
+    public function behaviors()
     {
         return [
             'timestamp' => [
@@ -35,6 +35,15 @@ class BaseModel extends ActiveRecord
                 'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'created_by',
                 'updatedByAttribute' => 'created_by',
+            ],
+            'slug' => [
+                'class' => Slug::class,
+                'attribute' => 'id',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+                'replacement' => '-',
+                'lowercase' => true,
+                'immutable' => false,
             ],
         ];
     }

@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Cart as BaseCart;
+use common\models\base\Cart as BaseCart;
 
 /**
  * This is the model class for table "tb_cart".

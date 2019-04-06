@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\UserClient as BaseUserClient;
+use common\models\base\UserClient as BaseUserClient;
 
 /**
  * This is the model class for table "tb_user_client".

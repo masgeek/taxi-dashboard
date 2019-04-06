@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\VwOrders as BaseVwOrders;
+use common\models\base\VwOrders as BaseVwOrders;
 
 /**
  * This is the model class for table "vw_orders".

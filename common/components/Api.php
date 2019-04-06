@@ -2,12 +2,10 @@
 
 namespace common\components;
 
+use common\models\AccessTokens;
+use common\models\AuthorizationCodes;
 use Yii;
 use yii\base\Component;
-use yii\helpers\Json;
-
-use common\models\AuthorizationCodes;
-use common\models\AccessTokens;
 
 /**
  * Class for common API functions

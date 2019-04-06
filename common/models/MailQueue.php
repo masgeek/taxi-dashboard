@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\MailQueue as BaseMailQueue;
+use common\models\base\MailQueue as BaseMailQueue;
 
 /**
  * This is the model class for table "mail_queue".

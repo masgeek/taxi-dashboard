@@ -22,11 +22,10 @@ User_Type
  */
 
 use common\helper\APP_UTILS;
-
+use common\models\ApiToken;
 use common\models\Riders as RIDER_MODEL;
 use common\models\Users;
 use common\models\UserType;
-use common\models\ApiToken;
 
 /**
  * Class USER_MODEL

@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Migration as BaseMigration;
+use common\models\base\Migration as BaseMigration;
 
 /**
  * This is the model class for table "tb_migration".

@@ -2,10 +2,9 @@
 
 namespace common\models\search;
 
-use Yii;
+use common\models\Chef;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Chef;
 
 /**
  * ChefSearch represents the model behind the search form about `common\models\Chef`.

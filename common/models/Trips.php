@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Trips as BaseTrips;
+use common\models\base\Trips as BaseTrips;
 
 /**
  * This is the model class for table "tb_trips".

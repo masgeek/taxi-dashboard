@@ -2,10 +2,9 @@
 
 namespace common\models\search;
 
-use Yii;
+use common\models\VwOrders;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\VwOrders;
 
 /**
  * VwCustomerOrdersSearch represents the model behind the search form about `common\models\VwOrders`.

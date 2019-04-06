@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Payment as BasePayment;
+use common\models\base\Payment as BasePayment;
 
 /**
  * This is the model class for table "payment".

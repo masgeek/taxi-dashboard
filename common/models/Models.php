@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Models as BaseModels;
+use common\models\base\Models as BaseModels;
 
 /**
  * This is the model class for table "tb_models".

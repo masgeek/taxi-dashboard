@@ -1,7 +1,5 @@
 <?php
 
-use yii\db\Migration;
-
 /**
  * Class m190403_172221_insert_vehicle_makes_year
  */

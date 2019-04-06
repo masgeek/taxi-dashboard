@@ -11,15 +11,8 @@ namespace common\controllers;
 use api\behaviours\Apiauth;
 use api\behaviours\Requestcheck;
 use Yii;
-use yii\base\InvalidCallException;
-use yii\filters\auth\CompositeAuth;
-use yii\filters\auth\HttpBasicAuth;
-use yii\filters\auth\HttpBearerAuth;
-use yii\filters\auth\QueryParamAuth;
 use yii\helpers\Json;
 use yii\rest\ActiveController;
-use yii\web\NotAcceptableHttpException;
-use yii\web\Response;
 
 /**
  * Base Controller API

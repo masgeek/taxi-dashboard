@@ -3,7 +3,6 @@
 namespace common\models\search;
 
 use common\helper\APP_UTILS;
-use common\helper\OrderHelper as ORDER_HELPER;
 use common\models\VwSalesReports;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

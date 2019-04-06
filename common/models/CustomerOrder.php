@@ -3,7 +3,7 @@
 namespace common\models;
 
 use common\helper\APP_UTILS;
-use \common\models\base\CustomerOrder as BaseCustomerOrder;
+use common\models\base\CustomerOrder as BaseCustomerOrder;
 
 /**
  * This is the model class for table "customer_order".

@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Makes as BaseMakes;
+use common\models\base\Makes as BaseMakes;
 
 /**
  * This is the model class for table "tb_makes".

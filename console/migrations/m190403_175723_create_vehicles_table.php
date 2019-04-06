@@ -1,7 +1,5 @@
 <?php
 
-use yii\db\Migration;
-
 /**
  * Handles the creation of table `{{%vehicles}}`.
  */

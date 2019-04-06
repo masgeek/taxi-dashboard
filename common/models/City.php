@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\City as BaseCity;
 use Yii;
-use \common\models\base\City as BaseCity;
 use yii\helpers\ArrayHelper;
 
 /**

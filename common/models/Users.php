@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\Users as BaseUsers;
+use common\models\base\Users as BaseUsers;
 
 /**
  * This is the model class for table "tb_users".

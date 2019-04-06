@@ -9,14 +9,13 @@
 namespace common\helper;
 
 use common\models\Cart as CART_MODEL;
-
-
-use common\models\CustomerOrderItem as CUSTOMER_ORDER_ITEMS;
 use common\models\CustomerOrder as CUSTOMER_ORDERS;
+use common\models\CustomerOrderItem as CUSTOMER_ORDER_ITEMS;
 use common\models\Payment as CUSTOMER_PAYMENTS;
 use common\models\Status as STATUS_MODEL;
 use common\models\WpCart as WP_CART_MODEL;
 use Yii;
+
 
 class OrderHelper
 {

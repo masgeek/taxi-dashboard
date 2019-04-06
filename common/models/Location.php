@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\Location as BaseLocation;
 use Yii;
-use \common\models\base\Location as BaseLocation;
 use yii\helpers\ArrayHelper;
 
 /**

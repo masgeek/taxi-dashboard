@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\MySession as BaseMySession;
+use common\models\base\MySession as BaseMySession;
 
 /**
  * This is the model class for table "my_session".

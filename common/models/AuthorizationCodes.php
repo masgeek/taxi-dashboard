@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use \common\models\base\AuthorizationCodes as BaseAuthorizationCodes;
+use common\models\base\AuthorizationCodes as BaseAuthorizationCodes;
 
 /**
  * This is the model class for table "tb_authorization_codes".

@@ -2,8 +2,6 @@
 
 namespace common\models\base;
 
-use Yii;
-
 /**
  * This is the model class for table "{{%delivery_time}}".
  *

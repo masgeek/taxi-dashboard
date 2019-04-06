@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\Sizes as BaseSizes;
 use Yii;
-use \common\models\base\Sizes as BaseSizes;
 
 /**
  * This is the model class for table "tb_sizes".
