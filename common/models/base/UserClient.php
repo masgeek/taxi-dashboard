@@ -8,11 +8,11 @@ namespace common\models\base;
  * @property integer $id
  * @property integer $user_id
  * @property integer $client_id
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\Users $user
  * @property \common\models\Clients $client
@@ -28,9 +28,10 @@ class UserClient extends \common\extend\BaseModel
     {
         return [
             [['user_id', 'client_id'], 'required'],
-            [['user_id', 'client_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255]
+            [['user_id', 'client_id', 'created_at', 'updated_at'], 'integer'],
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['slug'], 'unique']
         ];
     }
 

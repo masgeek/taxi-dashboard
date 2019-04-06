@@ -12,11 +12,11 @@ namespace common\models\base;
  * @property double $invoice_total
  * @property string $invoice_status
  * @property string $invoice_due_date
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\TripInvoiceItems[] $tripInvoiceItems
  */
@@ -32,10 +32,13 @@ class Invoices extends \common\extend\BaseModel
         return [
             [['invoice_id', 'invoice_sub_total', 'invoice_total'], 'required'],
             [['vat_percentage', 'invoice_sub_total', 'invoice_total'], 'number'],
-            [['invoice_due_date', 'created_at', 'updated_at'], 'safe'],
-            [['invoice_id', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
+            [['invoice_due_date'], 'safe'],
+            [['created_at', 'updated_at'], 'integer'],
+            [['invoice_id', 'updated_by', 'created_by'], 'string', 'max' => 255],
             [['invoice_status'], 'string', 'max' => 15],
-            [['invoice_id'], 'unique']
+            [['slug'], 'string', 'max' => 30],
+            [['invoice_id'], 'unique'],
+            [['slug'], 'unique']
         ];
     }
 

@@ -6,11 +6,11 @@ namespace common\models\base;
  * This is the base model class for table "{{%client_types}}".
  *
  * @property string $client_type
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\Clients[] $clients
  */
@@ -25,10 +25,12 @@ class ClientTypes extends \common\extend\BaseModel
     {
         return [
             [['client_type'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'integer'],
             [['client_type'], 'string', 'max' => 15],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['client_type'], 'unique']
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['client_type'], 'unique'],
+            [['slug'], 'unique']
         ];
     }
 

@@ -11,11 +11,11 @@ namespace common\models\base;
  * @property string $date_assigned
  * @property string $date_unassigned
  * @property integer $active
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\Drivers $driver
  * @property \common\models\Vehicles $vehicle
@@ -32,11 +32,13 @@ class AssignedVehicles extends \common\extend\BaseModel
     {
         return [
             [['driver_id', 'vehicle_id', 'date_assigned'], 'required'],
-            [['driver_id', 'vehicle_id'], 'integer'],
-            [['date_assigned', 'date_unassigned', 'created_at', 'updated_at'], 'safe'],
+            [['driver_id', 'vehicle_id', 'created_at', 'updated_at'], 'integer'],
+            [['date_assigned', 'date_unassigned'], 'safe'],
             [['active'], 'string', 'max' => 1],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned'], 'message' => 'The combination of Driver ID, Vehicle ID and Date Assigned has already been taken.']
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned'], 'message' => 'The combination of Driver ID, Vehicle ID and Date Assigned has already been taken.'],
+            [['slug'], 'unique']
         ];
     }
 

@@ -17,11 +17,11 @@ namespace common\models\base;
  * @property double $total_cost
  * @property integer $invoice_generated
  * @property resource $map_image
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\TripInvoiceItems[] $tripInvoiceItems
  * @property \common\models\Clients $client
@@ -38,12 +38,14 @@ class Trips extends \common\extend\BaseModel
     {
         return [
             [['client_id', 'assigned_vehicle_id', 'origin', 'destination', 'start_date', 'end_date', 'status'], 'required'],
-            [['client_id', 'assigned_vehicle_id'], 'integer'],
+            [['client_id', 'assigned_vehicle_id', 'created_at', 'updated_at'], 'integer'],
             [['origin', 'destination', 'map_image'], 'string'],
-            [['start_date', 'end_date', 'created_at', 'updated_at'], 'safe'],
+            [['start_date', 'end_date'], 'safe'],
             [['distance_covered', 'total_cost'], 'number'],
-            [['status', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['invoice_generated'], 'string', 'max' => 1]
+            [['status', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['invoice_generated'], 'string', 'max' => 1],
+            [['slug'], 'string', 'max' => 30],
+            [['slug'], 'unique']
         ];
     }
 

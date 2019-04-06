@@ -1,7 +1,7 @@
 <?php
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'name' => 'Results Tool',
+    'name' => 'Taxi App',
     'version' => '0.0.1',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',

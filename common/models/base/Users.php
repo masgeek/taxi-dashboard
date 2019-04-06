@@ -10,10 +10,10 @@ namespace common\models\base;
  * @property string $password
  * @property string $user_type
  * @property integer $account_active
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\AccessTokens[] $accessTokens
  * @property \common\models\AuthorizationCodes[] $authorizationCodes
@@ -31,7 +31,7 @@ class Users extends \common\extend\BaseModel
     {
         return [
             [['username', 'password', 'user_type'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'integer'],
             [['username', 'user_type'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 300],
             [['account_active'], 'string', 'max' => 1],

@@ -14,11 +14,11 @@ namespace common\models\base;
  * @property string $reg_no
  * @property string $reg_year
  * @property integer $active
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\AssignedVehicles[] $assignedVehicles
  * @property \common\models\Models $model
@@ -33,14 +33,16 @@ class Vehicles extends \common\extend\BaseModel
     public function rules()
     {
         return [
-            [['model_id', 'capacity', 'color'], 'integer'],
+            [['model_id', 'capacity', 'color', 'created_at', 'updated_at'], 'integer'],
             [['mileage', 'total_distance'], 'number'],
             [['reg_no', 'reg_year'], 'required'],
-            [['reg_year', 'created_at', 'updated_at'], 'safe'],
+            [['reg_year'], 'safe'],
             [['reg_no'], 'string', 'max' => 10],
             [['active'], 'string', 'max' => 1],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['reg_no'], 'unique']
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['reg_no'], 'unique'],
+            [['slug'], 'unique']
         ];
     }
 

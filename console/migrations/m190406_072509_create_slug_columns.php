@@ -1,7 +1,6 @@
 <?php
 
 use console\models\BaseMigration;
-use yii\db\Schema;
 
 /**
  * Class m190406_072509_create_slug_columns
@@ -16,7 +15,7 @@ class m190406_072509_create_slug_columns extends BaseMigration
     public function safeUp()
     {
         foreach ($this->getTables() as $tableName) {
-            $this->addColumn($tableName, 'slug', Schema::TYPE_STRING);
+            $this->addColumn($tableName, 'slug', $this->string(30)->unique());
         }
     }
 

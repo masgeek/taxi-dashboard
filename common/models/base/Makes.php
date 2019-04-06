@@ -7,11 +7,11 @@ namespace common\models\base;
  *
  * @property integer $id
  * @property string $name
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\MakeYears[] $makeYears
  */
@@ -26,9 +26,11 @@ class Makes extends \common\extend\BaseModel
     {
         return [
             [['name'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['name'], 'unique']
+            [['created_at', 'updated_at'], 'integer'],
+            [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['name'], 'unique'],
+            [['slug'], 'unique']
         ];
     }
 

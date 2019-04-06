@@ -15,11 +15,11 @@ namespace common\models\base;
  * @property double $min_charge
  * @property double $waiting_charge
  * @property string $currency
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\ClientTypes $clientType
  * @property \common\models\Trips[] $trips
@@ -37,17 +37,19 @@ class Clients extends \common\extend\BaseModel
         return [
             [['name', 'client_type', 'email', 'mobile', 'base_charge'], 'required'],
             [['base_charge', 'min_charge', 'waiting_charge'], 'number'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
+            [['created_at', 'updated_at'], 'integer'],
+            [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
             [['client_type'], 'string', 'max' => 15],
             [['email'], 'string', 'max' => 150],
             [['mobile'], 'string', 'max' => 20],
             [['landline'], 'string', 'max' => 50],
             [['currency'], 'string', 'max' => 3],
+            [['slug'], 'string', 'max' => 30],
             [['name'], 'unique'],
             [['email'], 'unique'],
             [['mobile'], 'unique'],
-            [['landline'], 'unique']
+            [['landline'], 'unique'],
+            [['slug'], 'unique']
         ];
     }
 

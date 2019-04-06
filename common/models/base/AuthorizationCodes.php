@@ -10,10 +10,10 @@ namespace common\models\base;
  * @property integer $user_id
  * @property string $app_id
  * @property integer $expires_at
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\Users $user
  */
@@ -28,8 +28,7 @@ class AuthorizationCodes extends \common\extend\BaseModel
     {
         return [
             [['code', 'app_id', 'expires_at'], 'required'],
-            [['user_id', 'expires_at'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['user_id', 'expires_at', 'created_at', 'updated_at'], 'integer'],
             [['code'], 'string', 'max' => 150],
             [['app_id'], 'string', 'max' => 200],
             [['updated_by', 'created_by'], 'string', 'max' => 255]

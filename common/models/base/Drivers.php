@@ -11,11 +11,11 @@ namespace common\models\base;
  * @property string $mobile
  * @property integer $active
  * @property string $password
- * @property string $created_at
- * @property string $updated_at
  * @property string $updated_by
  * @property string $created_by
  * @property string $slug
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\AssignedVehicles[] $assignedVehicles
  */
@@ -30,15 +30,17 @@ class Drivers extends \common\extend\BaseModel
     {
         return [
             [['username', 'email', 'mobile', 'password'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'integer'],
             [['username'], 'string', 'max' => 11],
             [['email'], 'string', 'max' => 150],
             [['mobile'], 'string', 'max' => 20],
             [['active'], 'string', 'max' => 1],
-            [['password', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
+            [['password', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
             [['username'], 'unique'],
             [['email'], 'unique'],
-            [['mobile'], 'unique']
+            [['mobile'], 'unique'],
+            [['slug'], 'unique']
         ];
     }
 
