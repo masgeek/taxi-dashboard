@@ -17,15 +17,17 @@ class Drivers extends BaseDrivers
         return array_replace_recursive(parent::rules(),
 	    [
             [['username', 'email', 'mobile', 'password'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'integer'],
             [['username'], 'string', 'max' => 11],
             [['email'], 'string', 'max' => 150],
             [['mobile'], 'string', 'max' => 20],
             [['active'], 'string', 'max' => 1],
-            [['password', 'updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
+            [['password', 'updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
             [['username'], 'unique'],
             [['email'], 'unique'],
-            [['mobile'], 'unique']
+            [['mobile'], 'unique'],
+            [['slug'], 'unique']
         ]);
     }
 	

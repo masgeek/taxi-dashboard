@@ -17,8 +17,7 @@ class AccessTokens extends BaseAccessTokens
         return array_replace_recursive(parent::rules(),
 	    [
             [['token', 'auth_code', 'app_id', 'expires_at'], 'required'],
-            [['user_id', 'expires_at'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['user_id', 'expires_at', 'created_at', 'updated_at'], 'integer'],
             [['token'], 'string', 'max' => 300],
             [['auth_code', 'app_id'], 'string', 'max' => 200],
             [['updated_by', 'created_by'], 'string', 'max' => 255]

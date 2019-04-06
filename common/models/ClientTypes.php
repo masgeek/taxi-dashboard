@@ -17,10 +17,12 @@ class ClientTypes extends BaseClientTypes
         return array_replace_recursive(parent::rules(),
 	    [
             [['client_type'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'integer'],
             [['client_type'], 'string', 'max' => 15],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['client_type'], 'unique']
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['client_type'], 'unique'],
+            [['slug'], 'unique']
         ]);
     }
 	

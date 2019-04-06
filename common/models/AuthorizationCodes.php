@@ -17,8 +17,7 @@ class AuthorizationCodes extends BaseAuthorizationCodes
         return array_replace_recursive(parent::rules(),
 	    [
             [['code', 'app_id', 'expires_at'], 'required'],
-            [['user_id', 'expires_at'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['user_id', 'expires_at', 'created_at', 'updated_at'], 'integer'],
             [['code'], 'string', 'max' => 150],
             [['app_id'], 'string', 'max' => 200],
             [['updated_by', 'created_by'], 'string', 'max' => 255]

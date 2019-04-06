@@ -17,11 +17,13 @@ class AssignedVehicles extends BaseAssignedVehicles
         return array_replace_recursive(parent::rules(),
 	    [
             [['driver_id', 'vehicle_id', 'date_assigned'], 'required'],
-            [['driver_id', 'vehicle_id'], 'integer'],
-            [['date_assigned', 'date_unassigned', 'created_at', 'updated_at'], 'safe'],
+            [['driver_id', 'vehicle_id', 'created_at', 'updated_at'], 'integer'],
+            [['date_assigned', 'date_unassigned'], 'safe'],
             [['active'], 'string', 'max' => 1],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned'], 'message' => 'The combination of Driver ID, Vehicle ID and Date Assigned has already been taken.']
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['driver_id', 'vehicle_id', 'date_assigned'], 'unique', 'targetAttribute' => ['driver_id', 'vehicle_id', 'date_assigned'], 'message' => 'The combination of Driver ID, Vehicle ID and Date Assigned has already been taken.'],
+            [['slug'], 'unique']
         ]);
     }
 	

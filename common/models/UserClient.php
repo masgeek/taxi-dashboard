@@ -17,9 +17,10 @@ class UserClient extends BaseUserClient
         return array_replace_recursive(parent::rules(),
 	    [
             [['user_id', 'client_id'], 'required'],
-            [['user_id', 'client_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255]
+            [['user_id', 'client_id', 'created_at', 'updated_at'], 'integer'],
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['slug'], 'unique']
         ]);
     }
 	

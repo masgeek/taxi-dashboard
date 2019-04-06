@@ -16,14 +16,16 @@ class Vehicles extends BaseVehicles
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['model_id', 'capacity', 'color'], 'integer'],
+            [['model_id', 'capacity', 'color', 'created_at', 'updated_at'], 'integer'],
             [['mileage', 'total_distance'], 'number'],
             [['reg_no', 'reg_year'], 'required'],
-            [['reg_year', 'created_at', 'updated_at'], 'safe'],
+            [['reg_year'], 'safe'],
             [['reg_no'], 'string', 'max' => 10],
             [['active'], 'string', 'max' => 1],
-            [['updated_by', 'created_by', 'slug'], 'string', 'max' => 255],
-            [['reg_no'], 'unique']
+            [['updated_by', 'created_by'], 'string', 'max' => 255],
+            [['slug'], 'string', 'max' => 30],
+            [['reg_no'], 'unique'],
+            [['slug'], 'unique']
         ]);
     }
 	
