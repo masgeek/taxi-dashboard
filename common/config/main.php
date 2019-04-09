@@ -1,8 +1,10 @@
 <?php
+$formatter = require_once(__DIR__ . '/formatter.php');
+
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'name' => 'Taxi App',
-    'version' => '0.0.1',
+    'version' => '1.0.0',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -18,6 +20,7 @@ return [
             //'class' => 'yii\rbac\PhpManager',
             'class' => 'yii\rbac\DbManager',
         ],
+        'formatter' => $formatter,
         'reCaptcha' => [
             'name' => 'reCaptcha',
             'class' => 'himiklab\yii2\recaptcha\ReCaptcha',

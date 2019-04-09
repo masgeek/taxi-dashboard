@@ -47,9 +47,10 @@ class SuperThemeAsset extends AssetBundle
         'myassets/js/template.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        // 'yii\web\YiiAsset',
+        //'yii\bootstrap\BootstrapAsset',
+        '\backend\assetmanager\Bootstrap4Asset',
         'yidas\yii\fontawesome\FontawesomeAsset',
-        'backend\assetmanager\SuperBowerAsset'
+        //'backend\assetmanager\SuperBowerAsset'
     ];
 }
