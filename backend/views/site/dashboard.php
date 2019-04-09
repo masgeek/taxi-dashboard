@@ -7,10 +7,16 @@
  * Time: 6:48 PM
  */
 
-/* @var $this \yii\web\View */
+/* @var $this View */
+
+use Faker\Factory;
+use yii\web\View;
+
 $this->params['breadcrumbs'][] = $this->title;
 
 $fmt = Yii::$app->formatter;
+$faker = Factory::create();
+
 ?>
 
 <div class="row">
@@ -153,55 +159,16 @@ $fmt = Yii::$app->formatter;
                     </div>
                     <div>
                         <ul class="list-inline">
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-primary"></span>
-                                <span>iPhone X</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-secondary"></span>
-                                <span>Mi tv4 55"</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-success"></span>
-                                <span>S9 plus</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-info"></span>
-                                <span>Pixal 2</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-warning"></span>
-                                <span>Macbook Air</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-danger"></span>
-                                <span>iPhone 8 plus</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-purple"></span>
-                                <span>Mi Note 7</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-pink"></span>
-                                <span>Lg G9</span>
-                            </li>
-
-                            <li class="mb-5">
-                                <span class="badge badge-dot badge-lg mr-1 badge-yellow"></span>
-                                <span>iMac 21"</span>
-                            </li>
-
-                            <li>
-                                <span class="badge badge-dot badge-lg mr-1 badge-brown"></span>
-                                <span>Google Home</span>
-                            </li>
+                            <?php
+                            for ($i = 1; $i <= 10; $i++):
+                                ?>
+                                <li class="mb-5">
+                                    <span class="badge badge-dot badge-lg mr-1 badge-primary"></span>
+                                    <span><?= $faker->firstNameMale ?></span>
+                                </li>
+                            <?php
+                            endfor;
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -254,56 +221,37 @@ $fmt = Yii::$app->formatter;
                     <h4>Monthly Income</h4>
                     <ul class="flexbox flex-justified text-center my-20">
                         <li class="px-10">
-                            <h6 class="mb-0 text-bold">8952</h6>
-                            <small>Abu Dhabi</small>
+                            <h6 class="mb-0 text-bold"><?= $fmt->asCurrency(1343256) ?></h6>
+                            <small>Nairobi</small>
                         </li>
 
                         <li class="br-1 bl-1 px-10">
-                            <h6 class="mb-0 text-bold">7458</h6>
-                            <small>Miami</small>
+                            <h6 class="mb-0 text-bold"><?= $fmt->asCurrency(239454) ?></h6>
+                            <small>Mombasa</small>
                         </li>
 
                         <li class="px-10">
-                            <h6 class="mb-0 text-bold">3254</h6>
-                            <small>London</small>
+                            <h6 class="mb-0 text-bold"><?= $fmt->asCurrency(123256) ?></h6>
+                            <small>Kisumu</small>
                         </li>
                     </ul>
                 </div>
                 <div class="text-center py-10 bb-1 bb-dashed">
-                    <h4>Taxes info</h4>
+                    <h4>Total Rides</h4>
                     <ul class="flexbox flex-justified text-center my-20">
                         <li class=" px-10">
-                            <h6 class="mb-0 text-bold">8952</h6>
-                            <small>Abu Dhabi</small>
+                            <h6 class="mb-0 text-bold"><?= $fmt->asDecimal(5403) ?></h6>
+                            <small>Nairobi</small>
                         </li>
 
                         <li class="br-1 bl-1 px-10">
-                            <h6 class="mb-0 text-bold">7458</h6>
-                            <small>Miami</small>
+                            <h6 class="mb-0 text-bold"><?= $fmt->asDecimal(2000) ?></h6>
+                            <small>Mombasa</small>
                         </li>
 
                         <li class="px-10">
-                            <h6 class="mb-0 text-bold">3254</h6>
-                            <small>London</small>
-                        </li>
-                    </ul>
-                </div>
-                <div class="text-center py-10 mt-2">
-                    <h4>Partners Sale</h4>
-                    <ul class="flexbox flex-justified text-center my-20">
-                        <li class="px-10">
-                            <h6 class="mb-0 text-bold">8952</h6>
-                            <small>Abu Dhabi</small>
-                        </li>
-
-                        <li class="br-1 bl-1 px-10">
-                            <h6 class="mb-0 text-bold">7458</h6>
-                            <small>Miami</small>
-                        </li>
-
-                        <li class="px-10">
-                            <h6 class="mb-0 text-bold">3254</h6>
-                            <small>London</small>
+                            <h6 class="mb-0 text-bold"><?= $fmt->asDecimal(1200) ?></h6>
+                            <small>Kisumu</small>
                         </li>
                     </ul>
                 </div>
@@ -333,7 +281,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5010</td>
                             <td>Lorem Ipsum</td>
-                            <td>$548</td>
+                            <td><?= $fmt->asCurrency(54000) ?></td>
                             <td><span class="label label-danger">Unpaid</span></td>
                             <td>15-Jan</td>
                             <td>
@@ -343,7 +291,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5011</td>
                             <td>Lorem Ipsum</td>
-                            <td>$548</td>
+                            <td><?= $fmt->asCurrency(3400) ?></td>
                             <td><span class="label label-success">Paid</span></td>
                             <td>15-Sep</td>
                             <td>
@@ -353,7 +301,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5012</td>
                             <td>Lorem Ipsum</td>
-                            <td>$9658</td>
+                            <td><?= $fmt->asCurrency(3400) ?></td>
                             <td><span class="label label-danger">Unpaid</span></td>
                             <td>15-Jun</td>
                             <td>
@@ -363,7 +311,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5013</td>
                             <td>Lorem Ipsum</td>
-                            <td>$4587</td>
+                            <td><?= $fmt->asCurrency(3234) ?></td>
                             <td><span class="label label-success">Paid</span></td>
                             <td>15-May</td>
                             <td>
@@ -373,7 +321,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5014</td>
                             <td>Lorem Ipsum</td>
-                            <td>$856</td>
+                            <td><?= $fmt->asCurrency(3400) ?></td>
                             <td><span class="label label-danger">Unpaid</span></td>
                             <td>15-Mar</td>
                             <td>
@@ -383,7 +331,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5015</td>
                             <td>Lorem Ipsum</td>
-                            <td>$956</td>
+                            <td><?= $fmt->asCurrency(3400) ?></td>
                             <td><span class="label label-danger">Unpaid</span></td>
                             <td>15-Aug</td>
                             <td>
@@ -393,7 +341,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5016</td>
                             <td>Lorem Ipsum</td>
-                            <td>$745</td>
+                            <td><?= $fmt->asCurrency(3400) ?></td>
                             <td><span class="label label-success">Paid</span></td>
                             <td>15-Aug</td>
                             <td>
@@ -403,7 +351,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5010</td>
                             <td>Lorem Ipsum</td>
-                            <td>$548</td>
+                            <td><?= $fmt->asCurrency(3400) ?></td>
                             <td><span class="label label-danger">Unpaid</span></td>
                             <td>15-Jan</td>
                             <td>
@@ -413,7 +361,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5011</td>
                             <td>Lorem Ipsum</td>
-                            <td>$548</td>
+                            <td><?= $fmt->asCurrency(3400) ?></td>
                             <td><span class="label label-success">Paid</span></td>
                             <td>15-Sep</td>
                             <td>
@@ -423,7 +371,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5012</td>
                             <td>Lorem Ipsum</td>
-                            <td>$9658</td>
+                            <td><?= $fmt->asCurrency(20000) ?></td>
                             <td><span class="label label-danger">Unpaid</span></td>
                             <td>15-Jun</td>
                             <td>
@@ -433,7 +381,7 @@ $fmt = Yii::$app->formatter;
                         <tr>
                             <td>#5013</td>
                             <td>Lorem Ipsum</td>
-                            <td>$4587</td>
+                            <td><?= $fmt->asCurrency(32128) ?></td>
                             <td><span class="label label-success">Paid</span></td>
                             <td>15-May</td>
                             <td>
