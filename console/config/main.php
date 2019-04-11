@@ -12,6 +12,12 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'console\controllers',
     'modules' => [],
+    'controllerMap' => [
+        'fixture' => [
+            'class' => 'yii\console\controllers\FixtureController',
+            'namespace' => 'common\ActiveRecords'
+        ]
+    ],
     'components' => [
         'log' => [
             'targets' => [
@@ -20,7 +26,7 @@ return [
                     'levels' => ['error', 'warning'],
                 ],
             ],
-        ],
+        ]
     ],
     'params' => $params,
 ];
