@@ -34,15 +34,32 @@ class UserController extends BaseRestController
         $actions = parent::actions();
 
         unset($actions['create']);
+        unset($actions['update']);
         unset($actions['index']);
         unset($actions['delete']);
         return $actions;
     }
 
     /**
-     * @return mixed
-     * @throws BadRequestHttpException
-     * @throws \yii\base\InvalidConfigException
+     * @SWG\Post(
+     *    path = "/users/sign-up",
+     *    tags = {"Users"},
+     *    operationId = "createUser",
+     *    summary = "Register a new user",
+     *    description = "Add new user",
+     *    produces = {"application/json"},
+     *    consumes = {"application/json"},
+     *	@SWG\Parameter(
+     *        in = "body",
+     *        name = "body",
+     *        description = "User data",
+     *        required = true,
+     *        type = "string",
+     *      @SWG\Schema(ref = "#/definitions/Users")
+     *    ),
+     *	@SWG\Response(response = 200, description = "success"),
+     *	@SWG\Response(response = 401, description = "Authorization required")
+     *)
      */
     public function actionCreate()
     {
@@ -73,5 +90,39 @@ class UserController extends BaseRestController
         }
 
         return Yii::$app->api->sendSuccessResponse($message);
+    }
+
+
+    /**
+     * @SWG\Put(
+     *    path = "/users/{userid}/update",
+     *    tags = {"Users"},
+     *    operationId = "updateUser",
+     *    summary = "Update user",
+     *    description = "Update user details",
+     *    produces = {"application/json"},
+     *    consumes = {"application/json"},
+     *	@SWG\Parameter(
+     *        in = "path",
+     *        name = "userid",
+     *        description = "User id",
+     *        required = true,
+     *        type = "string",
+     *    ),
+     *	@SWG\Parameter(
+     *        in = "body",
+     *        name = "body",
+     *        description = "User data",
+     *        required = true,
+     *        type = "string",
+     *      @SWG\Schema(ref = "#/definitions/Users")
+     *    ),
+     *	@SWG\Response(response = 200, description = "success"),
+     *	@SWG\Response(response = 401, description = "Authorization required")
+     *)
+     */
+    public function actionUpdate($userid)
+    {
+        return [];
     }
 }

@@ -72,6 +72,8 @@ class MakeController extends BaseRestController
      *     @SWG\Response(response=422, description="No make of that type found"),
      *     @SWG\Response(response = 401, description = "Authorization required")
      * )
+     * @param $make
+     * @return ActiveDataProvider
      */
     public function actionFindByMake($make)
     {

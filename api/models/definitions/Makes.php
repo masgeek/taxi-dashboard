@@ -4,7 +4,6 @@
 namespace api\models\definitions;
 
 /**
- * This is the model class for table "tb_makes".
  *
  * @SWG\Definition(required={"name"})
  *
