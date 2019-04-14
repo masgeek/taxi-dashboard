@@ -80,18 +80,16 @@ class BaseRestController extends ActiveController
             // Use class
             'class' => RateLimiter::class,
             //'class' => \yii\filters\RateLimiter::class,
-
             //'user' => Users::class,
-            // The maximum number of allowed requests
-            'rateLimit' => 10,
-            // The time period for the rates to apply to
-            'timePeriod' => 600,
+            // The maximum number of allowed requests per specified timepreiod
+            'rateLimit' => 20,
+            // The time period for the rates to apply to in seconds
+            'timePeriod' => 60,
             // Separate rate limiting for guests and authenticated users
             // Defaults to true
             // - false: use one set of rates, whether you are authenticated or not
             // - true: use separate ratesfor guests and authenticated users
-            'separateRates' => false,
-
+            'separateRates' => true,
             // Whether to return HTTP headers containing the current rate limiting information
             'enableRateLimitHeaders' => true,
         ];
