@@ -55,6 +55,7 @@ class UserController extends BaseRestController
 
         $model = new Users();
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+
         //now we begin the registration
         if ($model->validate()) {
             // let us begin the registration

@@ -9,6 +9,8 @@ use common\models\base\UserType as BaseUserType;
  */
 class UserType extends BaseUserType
 {
+    public const USER_PASSENGER = 'PASSENGER';
+    public const USER_DRIVER = 'DRIVER';
     /**
      * @inheritdoc
      */
