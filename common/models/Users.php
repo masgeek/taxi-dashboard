@@ -32,9 +32,4 @@ class Users extends BaseUsers
 
         return $rules;
     }
-
-    public function requestMapper()
-    {
-
-    }
 }

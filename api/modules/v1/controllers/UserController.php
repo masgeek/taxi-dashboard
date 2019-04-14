@@ -70,9 +70,10 @@ class UserController extends BaseRestController
             throw new BadRequestHttpException('Please use POST');
         }
 
+        $request = Yii::$app->getRequest()->getBodyParams();
         $model = new Users();
-        $model->load(Yii::$app->getRequest()->getBodyParams(), '');
-
+        $model->load($request, '');
+        $model->user_type = strtoupper($model->user_type);
         //now we begin the registration
         if ($model->validate()) {
             // let us begin the registration
