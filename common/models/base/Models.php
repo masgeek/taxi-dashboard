@@ -31,7 +31,7 @@ class Models extends \common\extend\BaseModel
             [['make_year_id', 'created_at', 'updated_at'], 'integer'],
             [['name', 'updated_by', 'created_by'], 'string', 'max' => 255],
             [['slug'], 'string', 'max' => 30],
-            [['name', 'make_year_id'], 'unique', 'targetAttribute' => ['name', 'make_year_id'], 'message' => 'The combination of Vehicle name and Make Year ID has already been taken.'],
+            [['name', 'make_year_id'], 'unique', 'targetAttribute' => ['name', 'make_year_id'], 'message' => 'The combination of Name and Make Year ID has already been taken.'],
             [['slug'], 'unique']
         ];
     }
@@ -51,7 +51,7 @@ class Models extends \common\extend\BaseModel
     {
         return [
             'id' => 'ID',
-            'name' => 'Vehicle name',
+            'name' => 'Name',
             'make_year_id' => 'Make Year ID',
             'slug' => 'Slug',
         ];

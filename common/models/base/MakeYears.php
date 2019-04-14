@@ -50,8 +50,8 @@ class MakeYears extends \common\extend\BaseModel
     {
         return [
             'id' => 'ID',
-            'year' => 'Year of manufacture',
-            'make_id' => 'Vehicle make',
+            'year' => 'Year',
+            'make_id' => 'Make ID',
             'slug' => 'Slug',
         ];
     }

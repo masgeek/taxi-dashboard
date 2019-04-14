@@ -46,7 +46,8 @@
     "zelenin/yii2-slug-behavior": "^1.5",
     "masgeek/yii2-swagger": "dev-master",
     "kartik-v/yii2-datecontrol": "^1.9",
-    "tsufeki/kayo-json-mapper": "^0.3"
+    "tsufeki/kayo-json-mapper": "^0.3",
+    "ethercreative/yii2-ip-ratelimiter": "^1.0"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",

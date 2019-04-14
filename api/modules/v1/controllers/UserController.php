@@ -5,14 +5,14 @@ namespace api\modules\v1\controllers;
 
 
 use api\behaviours\Apiauth;
+use api\models\definitions\Users;
 use common\controllers\BaseRestController;
-use common\models\Users;
 use Yii;
 use yii\web\BadRequestHttpException;
 
 class UserController extends BaseRestController
 {
-    public $modelClass = 'common\models\Users';
+    public $modelClass = 'api\models\definitions\Users';
 
     public function behaviors()
     {
@@ -35,7 +35,7 @@ class UserController extends BaseRestController
 
         unset($actions['create']);
         unset($actions['update']);
-        unset($actions['index']);
+        //unset($actions['index']);
         unset($actions['delete']);
         return $actions;
     }

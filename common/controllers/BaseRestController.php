@@ -10,6 +10,7 @@ namespace common\controllers;
 
 use api\behaviours\Apiauth;
 use api\behaviours\Requestcheck;
+use ethercreative\ratelimiter\RateLimiter;
 use Yii;
 use yii\filters\Cors;
 use yii\filters\VerbFilter;
@@ -50,6 +51,7 @@ use yii\web\Response;
  */
 class BaseRestController extends ActiveController
 {
+
     public $request;
 
     public $enableCsrfValidation = false;
@@ -73,6 +75,26 @@ class BaseRestController extends ActiveController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
+
+        $behaviors['rateLimiter'] = [
+            // Use class
+            'class' => RateLimiter::class,
+            //'class' => \yii\filters\RateLimiter::class,
+
+            //'user' => Users::class,
+            // The maximum number of allowed requests
+            'rateLimit' => 10,
+            // The time period for the rates to apply to
+            'timePeriod' => 600,
+            // Separate rate limiting for guests and authenticated users
+            // Defaults to true
+            // - false: use one set of rates, whether you are authenticated or not
+            // - true: use separate ratesfor guests and authenticated users
+            'separateRates' => false,
+
+            // Whether to return HTTP headers containing the current rate limiting information
+            'enableRateLimitHeaders' => true,
+        ];
 
         $behaviors['corsFilter'] = [
             'class' => Cors::class,
@@ -121,7 +143,6 @@ class BaseRestController extends ActiveController
                  QueryParamAuth::class,
              ],
          ];*/
-
         return $behaviors;
     }
 

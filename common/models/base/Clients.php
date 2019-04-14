@@ -68,13 +68,13 @@ class Clients extends \common\extend\BaseModel
     {
         return [
             'id' => 'ID',
-            'name' => 'Client name',
-            'client_type' => 'Client type',
+            'name' => 'Name',
+            'client_type' => 'Client Type',
             'email' => 'Email',
-            'mobile' => 'Mobile number',
+            'mobile' => 'Mobile',
             'landline' => 'Landline',
-            'base_charge' => 'Charge per KM',
-            'min_charge' => 'Minimum charge',
+            'base_charge' => 'Base Charge',
+            'min_charge' => 'Min Charge',
             'waiting_charge' => 'Waiting Charge',
             'currency' => 'Currency',
             'slug' => 'Slug',

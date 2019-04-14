@@ -15,6 +15,8 @@ namespace common\models\base;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $email
+ * @property integer $allowance
+ * @property integer $allowance_updated_at
  *
  * @property \common\models\AccessTokens[] $accessTokens
  * @property \common\models\AuthorizationCodes[] $authorizationCodes
@@ -32,7 +34,7 @@ class Users extends \common\extend\BaseModel
     {
         return [
             [['username', 'password', 'user_type', 'email'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['created_at', 'updated_at', 'allowance', 'allowance_updated_at'], 'integer'],
             [['username', 'user_type'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 300],
             [['account_active'], 'string', 'max' => 1],
@@ -64,6 +66,8 @@ class Users extends \common\extend\BaseModel
             'user_type' => 'User Type',
             'account_active' => 'Account Active',
             'email' => 'Email',
+            'allowance' => 'Allowance',
+            'allowance_updated_at' => 'Allowance Updated At',
         ];
     }
 

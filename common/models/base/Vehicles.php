@@ -62,12 +62,12 @@ class Vehicles extends \common\extend\BaseModel
         return [
             'id' => 'ID',
             'model_id' => 'Model ID',
-            'capacity' => 'Sitting capacity',
-            'color' => 'Vehicle color',
+            'capacity' => 'Capacity',
+            'color' => 'Color',
             'mileage' => 'Mileage',
-            'total_distance' => 'Total distance covered',
-            'reg_no' => 'Registration',
-            'reg_year' => 'Registration year',
+            'total_distance' => 'Total Distance',
+            'reg_no' => 'Reg No',
+            'reg_year' => 'Reg Year',
             'active' => 'Active',
             'slug' => 'Slug',
         ];

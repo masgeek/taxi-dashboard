@@ -49,7 +49,7 @@ class Makes extends \common\extend\BaseModel
     {
         return [
             'id' => 'ID',
-            'name' => 'Vehicle Make',
+            'name' => 'Name',
             'slug' => 'Slug',
         ];
     }
