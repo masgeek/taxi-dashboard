@@ -48,7 +48,14 @@ return [
                     ],
                 ],
             ],
-        ]
+        ],
+
+        //application specific modules
+        'client' => [
+            'class' => 'backend\modules\client\Module',
+            'defaultRoute' => 'manage-clients'
+        ],
+
     ],
     'components' => [
         'view' => [
@@ -77,7 +84,7 @@ return [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => $url_rules,
+            //'rules' => $url_rules,
         ],
     ],
     'as access' => [

@@ -70,13 +70,9 @@ use yii\helpers\Html;
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
-                        <?= Html::a('<i class="mdi mdi-toggle-switch-off"></i>Manage Users', [
-                            '//cars/manage'
-                        ], [
-                            'class' => 'sidebar-link',
-                        ]) ?>
-                    </li>
+                    <li><?= Html::a('<i class="mdi mdi-toggle-switch-off"></i>Manage Vehicles', ['//users']) ?></li>
+                    <li><?= Html::a('<i class="mdi mdi-toggle-switch-off"></i>Manage Vehicles', ['//user-clients']) ?></li>
+                    <li><?= Html::a('<i class="mdi mdi-toggle-switch-off"></i>Manage Vehicles', ['//user-types']) ?></li>
                 </ul>
             </li>
 

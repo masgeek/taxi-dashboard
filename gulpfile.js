@@ -8,13 +8,22 @@ var gulp = require('gulp'),
 //npm install --save-dev gulp
 
 const includedFileTypes = "js,css,png,jpeg,jpg,svg,tiff,woff,woff2,eot,ttf";
+const rootFileTypes = "htaccess";
 
 const sharedAssetsSource = './environments/_shared-assets/**/*';
+
+const $apacheConfig = './environments/_shared-assets/**/.htaccess';
+
 const $frontendSource = './environments/_front_end-assets/**/*.{' + includedFileTypes + '}';
 const $backendSource = './environments/_back_end-assets/**/*.{' + includedFileTypes + '}';
 
+
 const $webFrontendPath = './frontend/myassets/';
 const $adminBackendPath = './backend/myassets/';
+
+const $webFrontendRoot = './frontend/';
+const $webBackendRoot = './backend/';
+const $webApiRoot = './api/';
 
 
 /*
@@ -33,6 +42,11 @@ gulp.task('default', function (done) {
 
     gulp.src($backendSource)
         .pipe(gulp.dest($adminBackendPath));
+
+    gulp.src($apacheConfig)
+        .pipe(gulp.dest($webFrontendRoot))
+        .pipe(gulp.dest($webBackendRoot))
+        .pipe(gulp.dest($webApiRoot));
 
     done();
 });

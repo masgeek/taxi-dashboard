@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\PasswordValidator;
 use common\models\base\Users as BaseUsers;
 
 /**
@@ -9,6 +10,8 @@ use common\models\base\Users as BaseUsers;
  */
 class Users extends BaseUsers
 {
+
+    public $confirm_password;
 
     public function behaviors()
     {
@@ -30,6 +33,23 @@ class Users extends BaseUsers
         $rules[] = ['email', 'email'];
         $rules[] = ['user_type', 'in', 'allowArray' => true, 'range' => [UserType::USER_PASSENGER, UserType::USER_DRIVER], 'message' => 'Invalid user type'];
 
+        $rules[] = [['password'], PasswordValidator::class, 'preset' => PasswordValidator::SIMPLE, 'userAttribute' => 'username'];
+        $rules[] = ['confirm_password', 'compare', 'compareAttribute' => 'password'];
         return $rules;
+    }
+
+    public function registerUser()
+    {
+
+        $this->setPassword($this->password);
+        $this->generateAuthKey();
+
+        return false;
+        if ($this->validate()) {
+            if ($this->save()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

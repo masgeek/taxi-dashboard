@@ -82,7 +82,7 @@ class BaseRestController extends ActiveController
             //'class' => \yii\filters\RateLimiter::class,
             //'user' => Users::class,
             // The maximum number of allowed requests per specified timepreiod
-            'rateLimit' => 20,
+            'rateLimit' => 200,
             // The time period for the rates to apply to in seconds
             'timePeriod' => 60,
             // Separate rate limiting for guests and authenticated users

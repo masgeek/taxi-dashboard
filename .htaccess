@@ -26,7 +26,8 @@
 # This files may be left by some text/html editors and
 # pose a great security danger, when someone can access them
 <FilesMatch "(\.(bak|bat|config|sql|fla|md|psd|ini|log|sh|inc|swp|dist)|~|init|composer\.json|composer\.lock)$">
-  Order allow,deny
-  Deny from all
-  Satisfy All
+  #apache 2.1
+  #Order allow,deny
+  #apache 2.4
+  Require all denied
 </FilesMatch>

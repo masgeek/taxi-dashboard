@@ -5,14 +5,6 @@
 # @see http://demos.krajee.com/app-practical
 # ----------------------------------------------------------------------
 
-# Turning on the rewrite engine is necessary for the following rules and
-# features. "+FollowSymLinks" must be enabled for this to work symbolically.
-
-<IfModule mod_rewrite.c>
-    Options +FollowSymLinks
-    RewriteEngine On
-</IfModule>
-
 # "-Indexes" will have Apache block users from browsing folders without a default document
 # Usually you should leave this activated, because you shouldn't allow everybody to surf through
 # every folder on your server (which includes rather private places like CMS system folders).
@@ -34,9 +26,10 @@
 # This files may be left by some text/html editors and
 # pose a great security danger, when someone can access them
 <FilesMatch "(\.(bak|bat|config|sql|fla|md|psd|ini|log|sh|inc|swp|dist)|~|init|composer\.json|composer\.lock)$">
-  Order allow,deny
-  Deny from all
-  Satisfy All
+  #apache 2.1
+  #Order allow,deny
+  #apache 2.4
+  Require all denied
 </FilesMatch>
 
 # Increase cookie security
@@ -45,11 +38,9 @@
 </IfModule>
 
 # Settings to hide sitting-statement.php and ensure pretty urls
+Options +FollowSymLinks
+IndexIgnore */*
 RewriteEngine on
-
-# if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# otherwise forward it to sitting-statement.php
 RewriteRule . index.php
