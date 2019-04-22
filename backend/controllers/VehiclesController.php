@@ -49,10 +49,14 @@ class VehiclesController extends BaseWebController
      */
     public function actionView($slug)
     {
+        $model = $this->findModelBySlug($slug);
+
+        $this->view->title = $model->slug;
         return $this->render('view', [
-            'model' => $this->findModelBySlug($slug),
+            'model' => $model,
         ]);
     }
+
     /**
      * Finds the Vehicles model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -112,8 +116,10 @@ class VehiclesController extends BaseWebController
     {
         $model = $this->findModel($id);
 
+        $this->view->title = 'Update Vehicle: ' . ' ' . $model->slug;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'slug' => $model->id]);
+            return $this->redirect(['view', 'slug' => $model->slug]);
         } else {
             return $this->render('update', [
                 'model' => $model,
