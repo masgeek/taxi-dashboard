@@ -43,16 +43,16 @@ class VehiclesController extends BaseWebController
 
     /**
      * Displays a single Vehicles model.
-     * @param integer $id
+     * @param $slug
      * @return mixed
+     * @throws NotFoundHttpException
      */
-    public function actionView($id)
+    public function actionView($slug)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModelBySlug($slug),
         ]);
     }
-
     /**
      * Finds the Vehicles model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -63,6 +63,21 @@ class VehiclesController extends BaseWebController
     protected function findModel($id)
     {
         if (($model = Vehicles::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+     * @param $slug
+     * @return array|Vehicles|\yii\db\ActiveRecord|null
+     * @throws NotFoundHttpException
+     */
+    protected function findModelBySlug($slug)
+    {
+        $model = Vehicles::find()->where(['slug' => $slug])->one();
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -98,7 +113,7 @@ class VehiclesController extends BaseWebController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'slug' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,

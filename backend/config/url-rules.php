@@ -7,17 +7,17 @@
  */
 
 $url_rules = [
-    //'<controller:\w+>/<id:\d+>' => '<controller>/view',
-    //'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-    //'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-    //'<module:\w+>/<controller:\w+>/<id:\d+>' => '<module>/<controller>/view',
-    //'<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
+    // custom rules go first
+    'vehicles/index' => 'vehicles/index',
+    'vehicles/<slug:[a-zA-Z0-9-]+>/' => 'vehicles/view',
+    'vehicles/view/<id:[a-zA-Z0-9-]+>/' => 'vehicles/view',
+    'vehicles/update/<id:[a-zA-Z0-9-]+>/' => 'vehicles/update',
+    'vehicles/delete/<id:[a-zA-Z0-9-]+>/' => 'vehicles/delete',
 
-    '<controller:\w+>/<id:\d+>' => '<controller>/view',
-    '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-    'manage-client-users/<slug>' => 'manage-client-users/slug',
-    //'/reports/report/general-reports' => 'general-reports'
+    //Normal ruules
+    '<controller:w+>/<id:d+>' => '<controller>/view',
+    '<controller:w+>/<action:w+>/<id:d+>' => '<controller>/<action>',
+    '<controller:w+>/<action:w+>' => '<controller>/<action>',
 ];
 
 return $url_rules;

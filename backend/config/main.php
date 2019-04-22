@@ -84,7 +84,9 @@ return [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            //'rules' => $url_rules,
+            'enableStrictParsing' => false,
+            //'suffix' => '.json',
+            'rules' => $url_rules,
         ],
     ],
     'as access' => [
