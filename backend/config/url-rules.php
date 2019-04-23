@@ -9,6 +9,7 @@
 $url_rules = [
     // custom rules go first
     'vehicles/index' => 'vehicles/index',
+    'vehicles/create' => 'vehicles/create',
     'vehicles/<slug:[a-zA-Z0-9-]+>/' => 'vehicles/view',
     'vehicles/view/<id:[a-zA-Z0-9-]+>/' => 'vehicles/view',
     'vehicles/update/<id:[a-zA-Z0-9-]+>/' => 'vehicles/update',
